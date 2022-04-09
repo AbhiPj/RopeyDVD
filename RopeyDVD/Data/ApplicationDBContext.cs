@@ -18,7 +18,20 @@ namespace RopeyDVD.Data
         public DbSet<Studio> Studios { get; set; }
         public DbSet<MembershipCategory> MembershipCategories { get; set; }
         public DbSet<LoanType> LoanTypes { get; set; }
+        public DbSet<DVDTitle> DVDTitle { get; set; }
+        public DbSet<CastMember> CastMember { get; set; }
+        public DbSet<Member> Member { get; set; }
+        public DbSet<DVDCopy> DVDCopy { get; set; }
+        public DbSet<Loan> Loan { get; set; }
 
+
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CastMember>()
+                .HasKey(b => new { b.DVDNumber, b.ActorNumber });
+        }
 
     }
 }

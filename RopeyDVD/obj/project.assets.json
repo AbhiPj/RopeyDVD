@@ -1866,11 +1866,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Abhinav\\Documents\\college stuff\\AppDev\\cw2\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
+      "projectUniqueName": "C:\\Users\\Abhinav\\Documents\\college stuff\\AppDev\\latest\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
       "projectName": "RopeyDVD",
-      "projectPath": "C:\\Users\\Abhinav\\Documents\\college stuff\\AppDev\\cw2\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
+      "projectPath": "C:\\Users\\Abhinav\\Documents\\college stuff\\AppDev\\latest\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
       "packagesPath": "C:\\Users\\Abhinav\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Abhinav\\Documents\\college stuff\\AppDev\\cw2\\RopeyDVD\\RopeyDVD\\obj\\",
+      "outputPath": "C:\\Users\\Abhinav\\Documents\\college stuff\\AppDev\\latest\\RopeyDVD\\RopeyDVD\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Abhinav\\AppData\\Roaming\\NuGet\\NuGet.Config",

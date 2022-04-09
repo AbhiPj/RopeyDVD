@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RopeyDVD.Data;
 
@@ -11,9 +12,10 @@ using RopeyDVD.Data;
 namespace RopeyDVD.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220409162828_CastMember")]
+    partial class CastMember
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,27 +80,6 @@ namespace RopeyDVD.Migrations
                     b.ToTable("DVDCategory");
                 });
 
-            modelBuilder.Entity("RopeyDVD.Models.DVDCopy", b =>
-                {
-                    b.Property<int>("CopyNumber")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CopyNumber"), 1L, 1);
-
-                    b.Property<int>("DVDNumber")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DatePurchased")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("CopyNumber");
-
-                    b.HasIndex("DVDNumber");
-
-                    b.ToTable("DVDCopy");
-                });
-
             modelBuilder.Entity("RopeyDVD.Models.DVDTitle", b =>
                 {
                     b.Property<int>("DVDNumber")
@@ -139,43 +120,6 @@ namespace RopeyDVD.Migrations
                     b.ToTable("DVDTitle");
                 });
 
-            modelBuilder.Entity("RopeyDVD.Models.Loan", b =>
-                {
-                    b.Property<int>("LoanNumber")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LoanNumber"), 1L, 1);
-
-                    b.Property<int>("CopyNumber")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateDue")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateOut")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateReturned")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("LoanTypeNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MemberNumber")
-                        .HasColumnType("int");
-
-                    b.HasKey("LoanNumber");
-
-                    b.HasIndex("CopyNumber");
-
-                    b.HasIndex("LoanTypeNumber");
-
-                    b.HasIndex("MemberNumber");
-
-                    b.ToTable("Loan");
-                });
-
             modelBuilder.Entity("RopeyDVD.Models.LoanType", b =>
                 {
                     b.Property<int>("LoanTypeNumber")
@@ -195,39 +139,6 @@ namespace RopeyDVD.Migrations
                     b.HasKey("LoanTypeNumber");
 
                     b.ToTable("LoanTypes");
-                });
-
-            modelBuilder.Entity("RopeyDVD.Models.Member", b =>
-                {
-                    b.Property<int>("MembershipNumber")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MembershipNumber"), 1L, 1);
-
-                    b.Property<DateTime>("MemberDOB")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MembershipAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MembershipCategoryNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MembershipFirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MembershipLastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MembershipNumber");
-
-                    b.HasIndex("MembershipCategoryNumber");
-
-                    b.ToTable("Member");
                 });
 
             modelBuilder.Entity("RopeyDVD.Models.MembershipCategory", b =>
@@ -327,17 +238,6 @@ namespace RopeyDVD.Migrations
                     b.Navigation("DVDTitle");
                 });
 
-            modelBuilder.Entity("RopeyDVD.Models.DVDCopy", b =>
-                {
-                    b.HasOne("RopeyDVD.Models.DVDTitle", "DVDTitle")
-                        .WithMany("DVDCopy")
-                        .HasForeignKey("DVDNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DVDTitle");
-                });
-
             modelBuilder.Entity("RopeyDVD.Models.DVDTitle", b =>
                 {
                     b.HasOne("RopeyDVD.Models.DVDCategory", "DVDCategory")
@@ -365,44 +265,6 @@ namespace RopeyDVD.Migrations
                     b.Navigation("Studio");
                 });
 
-            modelBuilder.Entity("RopeyDVD.Models.Loan", b =>
-                {
-                    b.HasOne("RopeyDVD.Models.DVDCopy", "DVDCopy")
-                        .WithMany("Loan")
-                        .HasForeignKey("CopyNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RopeyDVD.Models.LoanType", "LoanType")
-                        .WithMany("Loan")
-                        .HasForeignKey("LoanTypeNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RopeyDVD.Models.Member", "Member")
-                        .WithMany("Loan")
-                        .HasForeignKey("MemberNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DVDCopy");
-
-                    b.Navigation("LoanType");
-
-                    b.Navigation("Member");
-                });
-
-            modelBuilder.Entity("RopeyDVD.Models.Member", b =>
-                {
-                    b.HasOne("RopeyDVD.Models.MembershipCategory", "MembershipCategory")
-                        .WithMany("Member")
-                        .HasForeignKey("MembershipCategoryNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MembershipCategory");
-                });
-
             modelBuilder.Entity("RopeyDVD.Models.Actor", b =>
                 {
                     b.Navigation("CastMember");
@@ -413,31 +275,9 @@ namespace RopeyDVD.Migrations
                     b.Navigation("DVDTitle");
                 });
 
-            modelBuilder.Entity("RopeyDVD.Models.DVDCopy", b =>
-                {
-                    b.Navigation("Loan");
-                });
-
             modelBuilder.Entity("RopeyDVD.Models.DVDTitle", b =>
                 {
                     b.Navigation("CastMember");
-
-                    b.Navigation("DVDCopy");
-                });
-
-            modelBuilder.Entity("RopeyDVD.Models.LoanType", b =>
-                {
-                    b.Navigation("Loan");
-                });
-
-            modelBuilder.Entity("RopeyDVD.Models.Member", b =>
-                {
-                    b.Navigation("Loan");
-                });
-
-            modelBuilder.Entity("RopeyDVD.Models.MembershipCategory", b =>
-                {
-                    b.Navigation("Member");
                 });
 
             modelBuilder.Entity("RopeyDVD.Models.Producer", b =>
