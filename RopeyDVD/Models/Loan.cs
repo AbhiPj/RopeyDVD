@@ -18,9 +18,7 @@ namespace RopeyDVD.Models
         public Member Member { get; set; }
         public DateTime DateOut { get; set; }
         public DateTime DateDue { get; set; }
-        public DateTime DateReturned { get; set; }
-
-
+        public DateTime ?DateReturned { get; set; }
 
     }
 }

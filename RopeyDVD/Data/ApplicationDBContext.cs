@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RopeyDVD.Models;
 
 namespace RopeyDVD.Data
 {
-    public class ApplicationDBContext : DbContext
+    public class ApplicationDBContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
             : base(options)
@@ -11,6 +13,23 @@ namespace RopeyDVD.Data
 
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<CastMember>()
+                .HasKey(b => new { b.DVDNumber, b.ActorNumber });
+
+    //        modelBuilder
+    //.Entity<UserRegisterModel>(builder =>
+    //{
+    //    builder.HasNoKey();
+    //    builder.ToTable("UserRegisterModel");
+    //});
+
+        }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<DVDCategory> DVDCategory { get; set; }
@@ -23,15 +42,8 @@ namespace RopeyDVD.Data
         public DbSet<Member> Member { get; set; }
         public DbSet<DVDCopy> DVDCopy { get; set; }
         public DbSet<Loan> Loan { get; set; }
+        public DbSet<RopeyDVD.Models.UserRegisterModel> UserRegisterModel { get; set; }
 
-
-
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<CastMember>()
-                .HasKey(b => new { b.DVDNumber, b.ActorNumber });
-        }
 
     }
 }

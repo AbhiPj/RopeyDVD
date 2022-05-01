@@ -13,6 +13,7 @@ namespace RopeyDVD.Models
         public Producer Producer { get; set; }
         [ForeignKey("Category")]
         public int CategoryNumber { get; set; }
+        public string DVDName { get; set; }
         public DVDCategory DVDCategory { get; set; }
         [ForeignKey("Studio")]
         public int StudioNumber { get; set; }

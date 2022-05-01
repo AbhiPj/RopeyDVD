@@ -1,0 +1,21 @@
+﻿@model RopeyDVD.Models.ViewModels.ActorDetailsViewModel
+
+@{
+    Layout = null;
+}
+
+
+
+   
+<h2>List of DVD the actor  @Model.ActorName 
+    has played in</h2>  
+<ul>  
+    @foreach (var item in Model.DVDName)  
+    {  
+        <li>  
+            @item
+        </li>  
+    }  
+</ul>  
+   
+</table>

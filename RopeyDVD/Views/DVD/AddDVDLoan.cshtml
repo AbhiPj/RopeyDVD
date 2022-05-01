@@ -1,0 +1,53 @@
+﻿@model RopeyDVD.Models.ViewModels.AddDVDLoan
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RopeyDVD.styles.css" asp-append-version="true" />
+        @if (ViewBag.TotalPrice != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.TotalPrice");
+            };
+        </script>
+    }
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="CopyNumber" class="control-label"></label>
+                <select asp-for="CopyNumber" class="form-select" asp-items="ViewBag.DVDCopy"></select> 
+                <span asp-validation-for="CopyNumber" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label asp-for="LoanType" class="control-label">Loan (In Days)</label>
+                <select asp-for="LoanType" class="form-select" asp-items="ViewBag.LoanTypeList"></select> 
+                <span asp-validation-for="LoanType" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label asp-for="MemberNumber" class="control-label"></label>
+                <select asp-for="MemberNumber" class="form-select" asp-items="ViewBag.MemberList"></select> 
+                <span asp-validation-for="MemberNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+</div>
+

@@ -8,7 +8,7 @@ namespace RopeyDVD.Models
         [Key]
         public int ActorNumber { get; set; } 
         public string ActorSurname { get; set; }
-        public int ActorFirstName { get; set; }
+        public string ActorFirstName { get; set; }
         public ICollection<CastMember> CastMember { get; set; }
 
     }

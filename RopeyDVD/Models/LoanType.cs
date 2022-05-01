@@ -7,7 +7,7 @@ public class LoanType
     [Key]
     public int LoanTypeNumber { get; set; }
     public string loanType { get; set; }
-    public string LoanDuration { get; set; }
+    public int LoanDuration { get; set; }
     public ICollection<Loan> Loan { get; set; }
 
 
