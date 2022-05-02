@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Abhinav\\Documents\\college stuff\\AppDev\\latest\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {}
+    "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Abhinav\\Documents\\college stuff\\AppDev\\latest\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {
+    "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Abhinav\\Documents\\college stuff\\AppDev\\latest\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
+        "projectUniqueName": "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
         "projectName": "RopeyDVD",
-        "projectPath": "C:\\Users\\Abhinav\\Documents\\college stuff\\AppDev\\latest\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
-        "packagesPath": "C:\\Users\\Abhinav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Abhinav\\Documents\\college stuff\\AppDev\\latest\\RopeyDVD\\RopeyDVD\\obj\\",
+        "projectPath": "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
+        "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Abhinav\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

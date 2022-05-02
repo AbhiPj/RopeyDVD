@@ -512,7 +512,56 @@ namespace RopeyDVD.Controllers
             return View("ADDDVDTitle");
         }
 
-        
+        public async Task<IActionResult> DVDCopyList()
+        {
+            DateTime dateYearAgo = DateTime.Now.AddDays(-365);
+            var dvdCopyList = _context.DVDCopy
+                .Join(
+             _context.DVDTitle,
+             DVDCopy => DVDCopy.DVDNumber,
+             DVDTitle => DVDTitle.DVDNumber,
+             (DVDCopy, DVDTitle) => new
+             {
+                 DVDCopy,
+                 DVDTitle,
+                 DatePurchased = DVDCopy.DatePurchased,
+             }
+             ).Where(a => a.DatePurchased < dateYearAgo)
+             .ToList();
 
-}
+            List<DVDCopyViewModel> dvdCopyViewModel = new List<DVDCopyViewModel>();
+
+            foreach (var dvd in dvdCopyList)
+            {
+                dvdCopyViewModel.Add(new DVDCopyViewModel()
+                {
+                    DVDNumber = dvd.DVDTitle.DVDNumber,
+                    DVDTitle = dvd.DVDTitle.DVDName,
+                    CopyNumber = dvd.DVDCopy.CopyNumber,
+                    DatePurchased = dvd.DVDCopy.DatePurchased,
+                });
+            }
+            return View("OldDVDList", dvdCopyViewModel);
+        }
+
+        public async Task<IActionResult> DVDCopyDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var dvd = await _context.DVDCopy
+                .FirstOrDefaultAsync(m => m.CopyNumber == id);
+            if (dvd == null)
+            {
+                return NotFound();
+            }
+            _context.DVDCopy.Remove(dvd);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("DVDCopyList");
+
+        }
+
+    }
 }

@@ -209,12 +209,9 @@
                 <span style="padding-left: 20px" class="logo_name">Ropey DVD</span>
             </div>
             <hr>
-            <li class="nav-item">
+            @*<li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </li>
+            </li>*@
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Member" asp-action="index">Member</a>
             </li>
@@ -229,15 +226,14 @@
                     <li><a class="nav-link" asp-area="" asp-controller="DVD" asp-action="DVDCopies">DVD Copies</a></li>
                     <li><a class="nav-link" asp-area="" asp-controller="DVD" asp-action="AddDVDLoan">ADD DVD Loan</a></li>
                     <li><a class="nav-link" asp-area="" asp-controller="DVD" asp-action="ReturnDVD">Return DVD</a></li>
+                    <li><a class="nav-link" asp-area="" asp-controller="DVD" asp-action="AddDVDTitle">Add DVD Title</a></li>
+                    <li><a class="nav-link" asp-area="" asp-controller="DVD" asp-action="DVDCopyList">Old DVD Copy</a></li>
                 </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Actor" asp-action="ViewActors">Actor</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="DVD" asp-action="AddDVDTitle">Add DVD</a>
-            </li>
-                <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="RegisterAdmin">Register Admin</a>
             </li>
             <li class="nav-item">

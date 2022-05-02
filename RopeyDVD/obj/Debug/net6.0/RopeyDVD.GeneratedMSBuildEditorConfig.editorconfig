@@ -8,113 +8,117 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RopeyDVD
 build_property.RootNamespace = RopeyDVD
-build_property.ProjectDir = C:\Users\Abhinav\Documents\college stuff\AppDev\latest\RopeyDVD\RopeyDVD\
+build_property.ProjectDir = C:\Users\dell\Desktop\AppDevGCW\RopeyDVD\RopeyDVD\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Abhinav\Documents\college stuff\AppDev\latest\RopeyDVD\RopeyDVD
+build_property.MSBuildProjectDirectory = C:\Users\dell\Desktop\AppDevGCW\RopeyDVD\RopeyDVD
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Actor/ActorDetails.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Actor/ActorDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcQWN0b3JEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Actor/DVDCopy.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Actor/DVDCopy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcRFZEQ29weS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Actor/View.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Actor/View.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Actor/ViewActors.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Actor/ViewActors.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcVmlld0FjdG9ycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Authentication/Index.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Authentication/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Authentication/Login.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Authentication/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Authentication/Register.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Authentication/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Authentication/RegisterAdmin.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Authentication/RegisterAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXJBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Authentication/RegisterUser.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Authentication/RegisterUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXJVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Authentication/UnauthorizedAccess.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Authentication/UnauthorizedAccess.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cVW5hdXRob3JpemVkQWNjZXNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Authentication/UserDetails.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Authentication/UserDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cVXNlckRldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/DVD/AddDVDLoan.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/DVD/AddDVDLoan.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXEFkZERWRExvYW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/DVD/AddDVDTitle.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/DVD/AddDVDTitle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXEFkZERWRFRpdGxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/DVD/DVDCopies.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/DVD/DVDCopies.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRENvcGllcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/DVD/DVDLoanDetails.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/DVD/DVDLoanDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRExvYW5EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/DVD/ReturnDVD.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/DVD/OldDVDList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXE9sZERWRExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/DVD/ReturnDVD.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXFJldHVybkRWRC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Home/Index.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Home/Privacy.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Member/Index.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Member/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Member/MemberDVD.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Member/MemberDVD.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXE1lbWJlckRWRC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Member/MemberList.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Member/MemberList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXE1lbWJlckxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Shared/Error.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/_ViewImports.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/_ViewStart.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Shared/_Layout.cshtml]
+[C:/Users/dell/Desktop/AppDevGCW/RopeyDVD/RopeyDVD/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-la23zskyrt
