@@ -4,18 +4,16 @@
     Layout = null;
 }
 
-
-
+<div class="admin-container">
+    <h2>List of DVD the actor  @Model.ActorName 
+        has played in</h2>  
+    <ul>  
+        @foreach (var item in Model.DVDName)  
+        {  
+            <li>  
+                @item
+            </li>  
+        }  
+    </ul>  
+</div>
    
-<h2>List of DVD the actor  @Model.ActorName 
-    has played in</h2>  
-<ul>  
-    @foreach (var item in Model.DVDName)  
-    {  
-        <li>  
-            @item
-        </li>  
-    }  
-</ul>  
-   
-</table>
