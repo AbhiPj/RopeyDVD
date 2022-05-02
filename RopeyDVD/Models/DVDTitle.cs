@@ -23,6 +23,8 @@ namespace RopeyDVD.Models
         public int PenaltyCharge { get; set; }
         public ICollection<CastMember> CastMember { get; set; }
         public ICollection<DVDCopy> DVDCopy { get; set; }
+        public int DVDCategoryCategoryNumber { get; set; }
+
 
     }
 }

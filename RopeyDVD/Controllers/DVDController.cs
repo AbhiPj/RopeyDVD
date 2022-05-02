@@ -19,41 +19,41 @@ namespace RopeyDVD.Controllers
             return View();
         }
 
-       /* public async Task<IActionResult> DVDDetails()
-        {
-            var @DVDDetails = _context.Member.Where(a => a.MembershipNumber == id)
-                .Join(
-            _context.Loan,
-            Member => Member.MembershipNumber,
-            Loan => Loan.MemberNumber,
-            (Member, Loan) => new
-            {
-                Member,
-                Loan,
-                DateOut = Loan.DateOut,
-            }
-            ).Join(
-                _context.DVDCopy,
-                DVDCopy => DVDCopy.Loan.CopyNumber,
-                Loan => Loan.CopyNumber,
-                (DVDCopy, Loan) => new
-                {
-                    DVDCopy,
-                    Loan,
-                }
-                ).Join(
-                _context.DVDTitle,
-                DVDCopy => DVDCopy.Loan.DVDNumber,
-                DVDTitle => DVDTitle.DVDNumber,
-                (DVDCopy, DVDTitle) => new
-                {
-                    DVDCopy,
-                    DateOut = DVDCopy.DVDCopy.DateOut,
-                    DVDTitle,
-                }
-                )
-            .Where(a => a.DateOut >= localDate).ToList();
-        }*/
+        /* public async Task<IActionResult> DVDDetails()
+         {
+             var @DVDDetails = _context.Member.Where(a => a.MembershipNumber == id)
+                 .Join(
+             _context.Loan,
+             Member => Member.MembershipNumber,
+             Loan => Loan.MemberNumber,
+             (Member, Loan) => new
+             {
+                 Member,
+                 Loan,
+                 DateOut = Loan.DateOut,
+             }
+             ).Join(
+                 _context.DVDCopy,
+                 DVDCopy => DVDCopy.Loan.CopyNumber,
+                 Loan => Loan.CopyNumber,
+                 (DVDCopy, Loan) => new
+                 {
+                     DVDCopy,
+                     Loan,
+                 }
+                 ).Join(
+                 _context.DVDTitle,
+                 DVDCopy => DVDCopy.Loan.DVDNumber,
+                 DVDTitle => DVDTitle.DVDNumber,
+                 (DVDCopy, DVDTitle) => new
+                 {
+                     DVDCopy,
+                     DateOut = DVDCopy.DVDCopy.DateOut,
+                     DVDTitle,
+                 }
+                 )
+             .Where(a => a.DateOut >= localDate).ToList();
+         }*/
 
         public async Task<IActionResult> DVDCopies()
         {
@@ -73,7 +73,8 @@ namespace RopeyDVD.Controllers
             Loan => Loan.CopyNumber,
             (DVDCopy, Loan) => new
             {
-                DVDCopy,Loan,
+                DVDCopy,
+                Loan,
             }
             ).Join(
                 _context.Member,
@@ -97,7 +98,7 @@ namespace RopeyDVD.Controllers
                 ).OrderByDescending(a => a.DateOut)
                 .FirstOrDefault();
 
-            if(DVDLoanDetails == null)
+            if (DVDLoanDetails == null)
             {
                 return NotFound();
             }
@@ -110,7 +111,7 @@ namespace RopeyDVD.Controllers
                 DateReturned = DVDLoanDetails.DVDCopy.DVDCopy.Loan.DateReturned,
             };
 
-            return View("DVDLoanDetails",dvdLoanDetails);
+            return View("DVDLoanDetails", dvdLoanDetails);
         }
 
         public async Task<IActionResult> AddDVDLoan()
@@ -124,7 +125,7 @@ namespace RopeyDVD.Controllers
             DVDCopyList = DVDCopy.Select(a => new SelectListItem()
             {
                 Value = a.CopyNumber.ToString(),
-                Text=a.CopyNumber.ToString()
+                Text = a.CopyNumber.ToString()
             }).ToList();
 
             var defItem = new SelectListItem()
@@ -142,7 +143,7 @@ namespace RopeyDVD.Controllers
                 Text = a.LoanDuration.ToString()
             }).ToList();
             LoanTypeList.Insert(0, defItem);
-    
+
             var MemberList = new List<SelectListItem>();
             MemberList = Member.Select(a => new SelectListItem()
             {
@@ -260,8 +261,8 @@ namespace RopeyDVD.Controllers
                         DateDue = DateDue,
                     };
 
-                        _context.Add(ad);
-                        await _context.SaveChangesAsync();
+                    _context.Add(ad);
+                    await _context.SaveChangesAsync();
                     //return RedirectToAction("AddDVDLoan");
                     return View("AddDVDLoan");
 
@@ -270,7 +271,7 @@ namespace RopeyDVD.Controllers
 
 
             }
-            else if(addDVDLoan.Age < 18)
+            else if (addDVDLoan.Age < 18)
             {
                 var DVD = _context.DVDCopy.Where(a => a.CopyNumber == addDVDLoan.CopyNumber)
                 .Join(
@@ -296,7 +297,7 @@ namespace RopeyDVD.Controllers
 
                 if (DVD.DVDCategory.AgeRestricted == "False")
                 {
-                    if(memberDetails.MembershipCategories.MembershipCategoryTotalLoans > loanCount )
+                    if (memberDetails.MembershipCategories.MembershipCategoryTotalLoans > loanCount)
                     {
                         Loan ad = new Loan()
                         {
@@ -313,14 +314,13 @@ namespace RopeyDVD.Controllers
                         return View("AddDVDLoan");
                     }
                 }
-
-            }   
+            }
             return NotFound();
         }
 
         public async Task<IActionResult> ReturnDVD()
         {
-            var DVD= GetLoanDVDList();
+            var DVD = GetLoanDVDList();
             ViewData["DVDList"] = DVD;
             return View("ReturnDVD");
         }
@@ -335,7 +335,7 @@ namespace RopeyDVD.Controllers
             _context.Update(Loan);
             await _context.SaveChangesAsync();
 
-            if(DateReturned > Loan.DateDue )
+            if (DateReturned > Loan.DateDue)
             {
 
                 var DVD = await _context.DVDCopy.Where(a => a.CopyNumber == Loan.CopyNumber)
@@ -345,7 +345,7 @@ namespace RopeyDVD.Controllers
                 DVDTitle => DVDTitle.DVDNumber,
                 (DVDCopy, DVDTitle) => new
                 {
-                    Penalty= DVDTitle.PenaltyCharge,
+                    Penalty = DVDTitle.PenaltyCharge,
                 }).FirstOrDefaultAsync();
 
                 var penaltyCharge = DVD.Penalty;
@@ -355,11 +355,26 @@ namespace RopeyDVD.Controllers
                 var DVDLoanList = GetLoanDVDList();
                 ViewData["DVDList"] = DVDLoanList;
                 ViewData["TotalPenalty"] = TotalPenalty;
-
                 return View("ReturnDVD");
             }
-
             return RedirectToAction("ReturnDVD");
+        }
+
+
+        public async Task<IActionResult> AddDVDTitle()
+        {
+            var actor = GetActorList();
+            var studio = GetStudioList();
+            var producer = GetProducerList();
+            var dvdCategory = GetCategoryList();
+
+
+            ViewData["Actor"] = actor;
+            ViewData["Studio"] = studio;
+            ViewData["Producer"] = producer;
+            ViewData["Category"] = dvdCategory;
+
+            return View("AddDVDTitle");
         }
 
         public List<SelectListItem> GetLoanDVDList()
@@ -382,5 +397,122 @@ namespace RopeyDVD.Controllers
             return DVDList;
         }
 
-    }
+        public List<SelectListItem> GetProducerList()
+        {
+            var producer = _context.Producers.ToList();
+            var ProducerList = new List<SelectListItem>();
+            ProducerList = producer.Select(a => new SelectListItem()
+            {
+                Value = a.ProducerNumber.ToString(),
+                Text = a.ProducerName.ToString()
+            }).ToList();
+
+            var defItem = new SelectListItem()
+            {
+                Value = "",
+                Text = "select"
+            };
+            ProducerList.Insert(0, defItem);
+
+            return ProducerList;
+        }
+
+        public List<SelectListItem> GetStudioList()
+        {
+            var studio = _context.Studios.ToList();
+            var studioList = new List<SelectListItem>();
+            studioList = studio.Select(a => new SelectListItem()
+            {
+                Value = a.StudioNumber.ToString(),
+                Text = a.StudioName.ToString()
+            }).ToList();
+
+            var defItem = new SelectListItem()
+            {
+                Value = "",
+                Text = "select"
+            };
+            studioList.Insert(0, defItem);
+
+            return studioList;
+        }
+            
+        public List<SelectListItem> GetActorList()
+        {
+            var actor = _context.Actors.ToList();
+            var actorList = new List<SelectListItem>();
+            actorList = actor.Select(a => new SelectListItem()
+            {
+                Value = a.ActorNumber.ToString(),
+                Text = a.ActorFirstName.ToString()
+            }).ToList();
+
+            var defItem = new SelectListItem()
+            {
+                Value = "",
+                Text = "select"
+            };
+            actorList.Insert(0, defItem);
+
+            return actorList;
+        }
+
+        public List<SelectListItem> GetCategoryList()
+        {
+            var DVDCategory = _context.DVDCategory.ToList();
+            var categoryList = new List<SelectListItem>();
+            categoryList = DVDCategory.Select(a => new SelectListItem()
+            {
+                Value = a.CategoryNumber.ToString(),
+                Text = a.CategotyDescription.ToString()
+            }).ToList();
+
+            var defItem = new SelectListItem()
+            {
+                Value = "",
+                Text = "select"
+            };
+            categoryList.Insert(0, defItem);
+
+            return categoryList;
+        }
+
+
+        public async Task<IActionResult> ADDDVD(AddDVDTitle AddDVDTitle)
+        {
+            var cate = _context.DVDCategory.ToList();
+            DVDTitle dvd = new DVDTitle()
+            {
+                DVDName = AddDVDTitle.DVDName,
+                ProducerNumber = AddDVDTitle.ProducerNumber,
+                CategoryNumber = AddDVDTitle.CategoryNumber,
+                DVDCategoryCategoryNumber = AddDVDTitle.CategoryNumber,
+                StudioNumber = AddDVDTitle.StudioNumber,
+                DateReleased = AddDVDTitle.DateReleased,
+                StandardCharge = AddDVDTitle.StandardCharge,
+                PenaltyCharge = AddDVDTitle.PenaltyCharge,
+            };
+
+            _context.Add(dvd);
+            await _context.SaveChangesAsync();
+
+            var DVDNumber = _context.DVDTitle
+            .OrderByDescending(a => a.DVDNumber)
+            .First();
+            var actorNumber = AddDVDTitle.ActorNumber;
+
+            CastMember castMember = new CastMember()
+            {
+                ActorNumber = actorNumber,
+                DVDNumber = DVDNumber.DVDNumber,
+            };
+            _context.Add(castMember);
+            await _context.SaveChangesAsync();
+
+            return View("ADDDVDTitle");
+        }
+
+        
+
+}
 }

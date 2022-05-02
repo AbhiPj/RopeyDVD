@@ -63,6 +63,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXEFkZERWRExvYW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/DVD/AddDVDTitle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXEFkZERWRFRpdGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/DVD/DVDCopies.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRENvcGllcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -89,6 +93,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Member/MemberDVD.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXE1lbWJlckRWRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Member/MemberList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXE1lbWJlckxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Abhinav/Documents/college stuff/AppDev/latest/RopeyDVD/RopeyDVD/Views/Shared/Error.cshtml]

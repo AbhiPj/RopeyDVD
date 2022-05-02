@@ -73,5 +73,77 @@ namespace RopeyDVD.Controllers
 
         }
 
+        public async Task<IActionResult> MemberList()
+        {
+            var memberList = _context.Member
+                .Join(
+            _context.MembershipCategories,
+            Member => Member.MembershipCategoryNumber,
+            MembershipCategory => MembershipCategory.MembershipCategoryNumber,
+            (Member, MembershipCategory) => new
+            {
+                Member,
+                MembershipCategory,
+            }
+            );
+
+            var q =
+                from m in _context.Member
+                join L in _context.Loan on m.MembershipNumber equals L.MemberNumber into ps
+                from p in ps.DefaultIfEmpty()
+                select new { Member = m, Count = p == null ? "False" : "True"};
+            List<MemberListViewModel> memberDVD = new List<MemberListViewModel>();
+            var DVDTotal = memberList.GroupBy(a => a.Member.MembershipFirstName).Select(g => new { name = g.Key, count = g.Count() }).ToList();
+
+            foreach (var member in DVDTotal)
+            {
+                var counter = 0;
+                foreach (var item in q)
+                {
+                    
+                    if(member.name == item.Member.MembershipFirstName)
+                    {
+                        if (item.Count == "True")
+                        {
+                            counter = counter + 1;
+                        }
+                        if (item.Count == "False")
+                        {
+                            
+                        }
+                    }
+                }
+
+                foreach(var mlist in memberList)
+                {
+                    if (member.name == mlist.Member.MembershipFirstName)
+                    {
+                        if (counter > mlist.MembershipCategory.MembershipCategoryTotalLoans)
+                        {
+                            memberDVD.Add(new MemberListViewModel()
+                            {
+                                MemberName = member.name,
+                                TotalDVD = counter,
+                                Category = mlist.MembershipCategory.MembershipCategoryDescription,
+                                Exceeds = "True",
+                            });
+                        }
+                        if (counter <= mlist.MembershipCategory.MembershipCategoryTotalLoans)
+                        {
+                            memberDVD.Add(new MemberListViewModel()
+                            {
+                                MemberName = member.name,
+                                Category = mlist.MembershipCategory.MembershipCategoryDescription,
+                                TotalDVD = counter,
+                                Exceeds = "False",
+                            });
+                        }
+                    }
+                }
+            }
+            return View("MemberList", memberDVD);
+
+        }
+
     }
 }
