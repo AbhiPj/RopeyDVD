@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="content-holder">
+    <a href="/dvd/dvdloanlist" class="loan-link">
+        <div class="loan-box">
+            <img class="image-box" src="~/image/rent.png" />
+        </div>
+        <div class="loan-text">
+            <h5>Loans</h5>
+        </div>
+    </a>
+
+    <a href="/dvd/dvddatetotal" class="loan-link">
+        <div class="loan-box">
+            <img class="image-box" src="~/image/date.jpg" />
+        </div>
+        <div class="loan-text">
+            <h5>Loan Dates</h5>
+        </div>
+    </a>
+
+
+
+</div>
+
+<style>
+    .content-holder {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 90vh;
+    }
+
+    .loan-box {
+        width: 400px;
+        height: 270px;
+        background-color: #dde4eb;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .image-box {
+        width: 100%;
+        background-content: center;
+    }
+
+    .loan-text {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .loan-link {
+        text-decoration: none;
+        border-radius: 10px;
+    }
+
+        .loan-link:hover {
+            background-color: black;
+        }
+
+    h5 {
+        color: grey;
+    }
+</style>

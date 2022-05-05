@@ -607,3 +607,15 @@ C:\Users\dell\Desktop\AppDevGCW\RopeyDVD\RopeyDVD\obj\Debug\net6.0\refint\RopeyD
 C:\Users\dell\Desktop\AppDevGCW\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.pdb
 C:\Users\dell\Desktop\AppDevGCW\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.genruntimeconfig.cache
 C:\Users\dell\Desktop\AppDevGCW\RopeyDVD\RopeyDVD\obj\Debug\net6.0\ref\RopeyDVD.dll
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.csproj.AssemblyReference.cache
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.GeneratedMSBuildEditorConfig.editorconfig
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.AssemblyInfoInputs.cache
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.AssemblyInfo.cs
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.csproj.CoreCompileInputs.cache
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.MvcApplicationPartsAssemblyInfo.cs
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.MvcApplicationPartsAssemblyInfo.cache
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.RazorAssemblyInfo.cache
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.RazorAssemblyInfo.cs
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.dll
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\ref\RopeyDVD.dll
+E:\dotNet\RopeyDVD\RopeyDVD\obj\Debug\net6.0\RopeyDVD.pdb

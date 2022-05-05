@@ -10,6 +10,4 @@ public class LoanType
     public int LoanDuration { get; set; }
     public ICollection<Loan> Loan { get; set; }
 
-
-
 }
