@@ -563,5 +563,85 @@ namespace RopeyDVD.Controllers
 
         }
 
+        public async Task<IActionResult> DVDLoanList()
+        {
+            var LoanList = _context.Loan.Where(x => x.DateReturned == null)
+                .Join(
+             _context.Member,
+             Member => Member.MemberNumber,
+             Loan => Loan.MembershipNumber,
+             (Member, Loan) => new
+             {
+                 Member,
+                 Loan,
+             }
+             ).Join(
+             _context.DVDCopy,
+             DVDCopy => DVDCopy.Member.CopyNumber,
+             Loan => Loan.CopyNumber,
+             (DVDCopy, Loan) => new
+             {
+                 DVDCopy,
+                 Loan,
+             }
+        ).Join(
+             _context.DVDTitle,
+             DVDCopy => DVDCopy.Loan.DVDNumber,
+             DVDTitle => DVDTitle.DVDNumber,
+             (DVDCopy, Loan) => new
+             {
+                 DVDCopy,
+                 Loan,
+             }
+        ).OrderBy(a => a.DVDCopy.DVDCopy.Member.DateOut);
+
+            List<DVDLoanViewModel> dvdLoan = new List<DVDLoanViewModel>();
+
+            foreach (var dvd in LoanList)
+            {
+                dvdLoan.Add(new DVDLoanViewModel()
+                {
+                    DVDTitle= dvd.Loan.DVDName,
+                    CopyNumber = dvd.DVDCopy.DVDCopy.Member.CopyNumber,
+                    MemberName = dvd.DVDCopy.DVDCopy.Member.Member.MembershipFirstName,
+                });
+            }
+
+            var DateOutLoan = _context.Loan.GroupBy(a => a.DateOut.Date).Select(g => new { name = g.Key, count = g.Count() }).ToList();
+
+            List<DVDLoanViewModel> dvdLoanDate = new List<DVDLoanViewModel>();
+
+            foreach (var loan in DateOutLoan)
+            {
+                dvdLoanDate.Add(new DVDLoanViewModel()
+                {
+                     DateOut = loan.name,
+                     TotalLoans= loan.count.ToString(),
+                });
+            }
+
+            ViewData["LoanDateCount"] = dvdLoanDate;
+
+
+            return View("DVDLoanList",dvdLoan);
+        }
+
+        public async Task<IActionResult> DVDDateTotal()
+        {
+            var DateOutLoan = _context.Loan.GroupBy(a => a.DateOut.Date).Select(g => new { name = g.Key, count = g.Count() }).ToList();
+
+            List<DVDLoanViewModel> dvdLoanDate = new List<DVDLoanViewModel>();
+
+            foreach (var loan in DateOutLoan)
+            {
+                dvdLoanDate.Add(new DVDLoanViewModel()
+                {
+                    DateOut = loan.name,
+                    TotalLoans = loan.count.ToString(),
+                });
+            }
+            return View("LoanDate", dvdLoanDate);
+
+        }
     }
 }
