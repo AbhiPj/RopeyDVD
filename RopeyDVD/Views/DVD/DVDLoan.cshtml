@@ -4,23 +4,27 @@
 @{
 }
 <div class="content-holder">
-    <a href="/dvd/dvdloanlist" class="loan-link">
-        <div class="loan-box">
-            <img class="image-box" src="~/image/rent.png" />
-        </div>
-        <div class="loan-text">
-            <h5>Loans</h5>
-        </div>
-    </a>
+    <div class="loan-link">
+        <a href="/dvd/dvdloanlist">
+            <div class="loan-box">
+                <img class="image-box" src="~/image/loan.svg" />
+            </div>
+            <div class="loan-text">
+                <h5>Loans</h5>
+            </div>
+        </a>
+    </div>
 
-    <a href="/dvd/dvddatetotal" class="loan-link">
-        <div class="loan-box">
-            <img class="image-box" src="~/image/date.jpg" />
-        </div>
-        <div class="loan-text">
-            <h5>Loan Dates</h5>
-        </div>
-    </a>
+    <div class="loan-link">
+        <a href="/dvd/dvddatetotal">
+            <div class="loan-box">
+                <img class="image-box" src="~/image/loanDate.svg" style="width:100%" />
+            </div>
+            <div class="loan-text">
+                <h5>Loan Dates</h5>
+            </div>
+        </a>
+    </div>
 
 
 
@@ -34,16 +38,19 @@
         height: 90vh;
     }
 
+    .loan-link a {
+        text-decoration: none;
+    }
+
     .loan-box {
         width: 400px;
-        height: 270px;
-        background-color: #dde4eb;
+        height: 400px;
         border-radius: 10px;
         overflow: hidden;
     }
 
     .image-box {
-        width: 100%;
+        width: 90%;
         background-content: center;
     }
 
@@ -51,18 +58,22 @@
         margin-top: 10px;
         display: flex;
         justify-content: center;
+        box-shadow: 10px black;
+        border-radius: 10px;
     }
 
     .loan-link {
         text-decoration: none;
         border-radius: 10px;
+        box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+        padding: 15px;
     }
 
         .loan-link:hover {
-            background-color: black;
+            background-color: #edf3ff;
         }
 
     h5 {
-        color: grey;
+        color: #959799;
     }
 </style>
