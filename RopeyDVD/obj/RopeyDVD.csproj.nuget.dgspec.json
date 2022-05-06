@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "E:\\dotNet\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {}
+    "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {}
   },
   "projects": {
-    "E:\\dotNet\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {
+    "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\dotNet\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
+        "projectUniqueName": "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
         "projectName": "RopeyDVD",
-        "projectPath": "E:\\dotNet\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
-        "packagesPath": "C:\\Users\\anish\\.nuget\\packages\\",
-        "outputPath": "E:\\dotNet\\RopeyDVD\\RopeyDVD\\obj\\",
+        "projectPath": "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
+        "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\anish\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -93,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
