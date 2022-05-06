@@ -644,9 +644,11 @@ namespace RopeyDVD.Controllers
 
         }
 
-        public async Task<IActionResult> DVDLoan(int? id)
+        public async Task<IActionResult> DVDLoan()
         {
             return View("DVDLoan");
         }
+
+
     }
 }

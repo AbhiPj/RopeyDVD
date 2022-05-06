@@ -144,6 +144,61 @@ namespace RopeyDVD.Controllers
             return View("MemberList", memberDVD);
 
         }
+        public async Task<IActionResult> MemberDVDLoan()
+        {
+            var lastLoan = DateTime.Now.AddDays(-31);
+            var MemberDVD = _context.Member
+                .Join(
+                 _context.Loan,
+                 Member => Member.MembershipNumber,
+                 Loan => Loan.MemberNumber,
+                 (Member, Loan) => new
+                 {
+                     Member,
+                     Loan,
+                     DateOut = Loan.DateOut,
+                 }
+                 ).Join(
+                 _context.DVDCopy,
+                 DVDCopy => DVDCopy.Loan.CopyNumber,
+                 Loan => Loan.CopyNumber,
+                 (DVDCopy, Loan) => new
+                 {
+                     DVDCopy,
+                     Loan,
+                 }
+                 ).Join(
+                 _context.DVDTitle,
+                 DVDCopy => DVDCopy.Loan.DVDNumber,
+                 DVDTitle => DVDTitle.DVDNumber,
+                 (DVDCopy, DVDTitle) => new
+                 {
+                     DVDCopy,
+                     DVDTitle,
+                 }
+                 )
+                .Where(a => a.DVDCopy.DVDCopy.DateOut < lastLoan).OrderBy(c => c.DVDCopy.DVDCopy.DateOut)
+                 .GroupBy(e => e.DVDCopy.DVDCopy.Member.MembershipNumber)
+            .Select(e => e.First());
 
+            List<MemberDVDLoan> memberDVDList = new List<MemberDVDLoan>();
+
+            foreach (var dvd in MemberDVD)
+            {
+                var date = DateTime.Now.Day;
+                var NoOfDays =  dvd.DVDCopy.DVDCopy.DateOut.Day - date;
+                memberDVDList.Add(new MemberDVDLoan()
+                {
+                    FirstName = dvd.DVDCopy.DVDCopy.Member.MembershipFirstName,
+                    LastName = dvd.DVDCopy.DVDCopy.Member.MembershipLastName,
+                    Address = dvd.DVDCopy.DVDCopy.Member.MembershipAddress,
+                    DateOut = dvd.DVDCopy.DVDCopy.DateOut,
+                    DVDTitle = dvd.DVDTitle.DVDName,
+                    NoOfDays = NoOfDays,
+                }); ;
+            }
+
+            return View(memberDVDList);
+        }
     }
 }

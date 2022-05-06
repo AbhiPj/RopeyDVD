@@ -18,11 +18,5 @@ namespace RopeyDVD.Models
         public DateTime MemberDOB { get; set; }
         public ICollection<Loan> Loan { get; set; }
 
-
-
-
-
-
-
     }
 }

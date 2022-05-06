@@ -9851,23 +9851,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dell\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Abhinav\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
+      "projectUniqueName": "C:\\Users\\Abhinav\\Desktop\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
       "projectName": "RopeyDVD",
-      "projectPath": "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
-      "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dell\\Desktop\\AppDevGCW\\RopeyDVD\\RopeyDVD\\obj\\",
+      "projectPath": "C:\\Users\\Abhinav\\Desktop\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
+      "packagesPath": "C:\\Users\\Abhinav\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Abhinav\\Desktop\\RopeyDVD\\RopeyDVD\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Abhinav\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9948,7 +9944,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
