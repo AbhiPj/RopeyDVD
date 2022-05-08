@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Abhinav\\Desktop\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {}
+    "C:\\Users\\user\\Documents\\GitHub\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Abhinav\\Desktop\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {
+    "C:\\Users\\user\\Documents\\GitHub\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Abhinav\\Desktop\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
         "projectName": "RopeyDVD",
-        "projectPath": "C:\\Users\\Abhinav\\Desktop\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
-        "packagesPath": "C:\\Users\\Abhinav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Abhinav\\Desktop\\RopeyDVD\\RopeyDVD\\obj\\",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\RopeyDVD\\RopeyDVD\\RopeyDVD.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\RopeyDVD\\RopeyDVD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Abhinav\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
