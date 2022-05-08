@@ -1,42 +1,46 @@
 ﻿
 @model IEnumerable<RopeyDVD.Models.ViewModels.DVDCopyViewModel>
 
-@{
-}
+    @{
+    }
 
-<h1>Old DVD list</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-             <th>
-                @Html.DisplayNameFor(model => model.CopyNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DVDTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatePurchased)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CopyNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DVDTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatePurchased)
-            </td>
-            <td>
-                <a asp-action="DVDCopyDelete" asp-route-id="@item.CopyNumber">Delete</a>
-            </td>
-        </tr>
+    <div class="admin-container">
+
+        <h1>Old DVD list</h1>
+
+        <table class="hover" id="example">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CopyNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DVDTitle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DatePurchased)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CopyNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DVDTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DatePurchased)
+                    </td>
+                    <td>
+                        <a asp-action="DVDCopyDelete" asp-route-id="@item.CopyNumber">Delete</a>
+                    </td>
+                </tr>
 }
-    </tbody>
-</table>
+            </tbody>
+        </table>
+    </div>
