@@ -15,6 +15,15 @@
 </script>
 }
 
+@if (ViewBag.ErrorMessage != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            errModal.style.display = "block";
+        };
+    </script>
+}
+
 
 <style>
     /* The Modal (background) */
@@ -26,18 +35,19 @@
         top: 0;
         width: 100%; /* Full width */
         height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        overflow: auto; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4);
     }
 
     /* Modal Content/Box */
     .modal-content {
         background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
+        margin: 12% auto; 
         padding: 20px;
         border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
+        width: 30%; 
+        height: 40%;
     }
 
     /* The Close Button */
@@ -58,14 +68,22 @@
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Total Price:</h2>
         <p>@ViewBag.TotalPrice</p>
     </div>
+</div>
 
+<!-- The Modal -->
+<div id="errModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Error:</h2>
+        <p>@ViewBag.ErrorMessage</p>
+    </div>
 </div>
 
 <div class="admin-container">
@@ -110,17 +128,10 @@
 <script>
     // Get the modal
     var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
+    var errModal = document.getElementById("errModal");
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
