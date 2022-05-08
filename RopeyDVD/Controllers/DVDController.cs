@@ -19,8 +19,8 @@ namespace RopeyDVD.Controllers
             return View();
         }
 
-         public async Task<IActionResult> DVDDetails()
-         {
+        public async Task<IActionResult> DVDDetails()
+        {
             var DVDDetails = _context.DVDTitle
                 .Join(
             _context.Producers,
@@ -101,7 +101,7 @@ namespace RopeyDVD.Controllers
             {
                 dvdActor.Add(new Actor()
                 {
-                    ActorFirstName= dvd.Actor.Actor.ActorFirstName,
+                    ActorFirstName = dvd.Actor.Actor.ActorFirstName,
                     ActorSurname = dvd.Actor.Actor.ActorSurname,
                     ActorNumber = dvd.Actor.ActorNumber,
                 });
@@ -173,7 +173,6 @@ namespace RopeyDVD.Controllers
 
         public async Task<IActionResult> AddDVDLoan()
         {
-
             var DVDCopy = await _context.DVDCopy.ToListAsync();
             var LoanType = await _context.LoanTypes.ToListAsync();
             var Member = await _context.Member.ToListAsync();
@@ -219,9 +218,6 @@ namespace RopeyDVD.Controllers
 
         public async Task<IActionResult> Create(AddDVDLoan addDVDLoan)
         {
-
-            //-------------------------------------
-
             var DVDCopy = await _context.DVDCopy.ToListAsync();
             var LoanType = await _context.LoanTypes.ToListAsync();
             var Member = await _context.Member.ToListAsync();
@@ -260,10 +256,6 @@ namespace RopeyDVD.Controllers
             ViewData["DVDCopy"] = DVDCopyList;
             ViewData["LoanTypeList"] = LoanTypeList;
             ViewData["MemberList"] = MemberList;
-
-
-
-            //--------------------------------------
 
             var memberLoanType = _context.Loan.Where(a => a.MemberNumber == addDVDLoan.MemberNumber);
             var loanCount = memberLoanType.Count();
@@ -324,9 +316,11 @@ namespace RopeyDVD.Controllers
                     return View("AddDVDLoan");
 
                 }
-
-
-
+                else
+                {
+                    ViewData["ErrorMessage"] = "Loan Capacity reached";
+                    return View("AddDVDLoan");
+                }
             }
             else if (addDVDLoan.Age < 18)
             {
@@ -370,6 +364,16 @@ namespace RopeyDVD.Controllers
                         //return RedirectToAction("AddDVDLoan");
                         return View("AddDVDLoan");
                     }
+                    else
+                    {
+                        ViewData["ErrorMessage"] = "Loan Capacity reached";
+                        return View("AddDVDLoan");
+                    }
+                }
+                else
+                {
+                    ViewData["ErrorMessage"] = "DVD is adult rated";
+                    return View("AddDVDLoan");
                 }
             }
             return NotFound();
@@ -493,7 +497,7 @@ namespace RopeyDVD.Controllers
 
             return studioList;
         }
-            
+
         public List<SelectListItem> GetActorList()
         {
             var actor = _context.Actors.ToList();
@@ -658,7 +662,7 @@ namespace RopeyDVD.Controllers
             {
                 dvdLoan.Add(new DVDLoanViewModel()
                 {
-                    DVDTitle= dvd.Loan.DVDName,
+                    DVDTitle = dvd.Loan.DVDName,
                     CopyNumber = dvd.DVDCopy.DVDCopy.Member.CopyNumber,
                     MemberName = dvd.DVDCopy.DVDCopy.Member.Member.MembershipFirstName,
                 });
@@ -672,15 +676,15 @@ namespace RopeyDVD.Controllers
             {
                 dvdLoanDate.Add(new DVDLoanViewModel()
                 {
-                     DateOut = loan.name,
-                     TotalLoans= loan.count.ToString(),
+                    DateOut = loan.name,
+                    TotalLoans = loan.count.ToString(),
                 });
             }
 
             ViewData["LoanDateCount"] = dvdLoanDate;
 
 
-            return View("DVDLoanList",dvdLoan);
+            return View("DVDLoanList", dvdLoan);
         }
 
         public async Task<IActionResult> DVDDateTotal()
@@ -742,7 +746,7 @@ namespace RopeyDVD.Controllers
                 var NoOfDays = dvd.DVDCopy.DateOut.Day - date;
                 DVDCopyLoanList.Add(new PreviousDVDCopyViewModel()
                 {
-                    DVDName= dvd.DVDTitle.DVDName,
+                    DVDName = dvd.DVDTitle.DVDName,
                     CopyNumber = dvd.DVDCopy.DVDCopy.CopyNumber,
                 }); ;
             }
