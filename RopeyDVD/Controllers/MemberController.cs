@@ -14,6 +14,8 @@ namespace RopeyDVD.Controllers
         {
             _context = context;
         }
+
+        //Returns the list of members in the database
         public async Task<IActionResult> index()
         {
             return View(await _context.Member.ToListAsync());
@@ -21,25 +23,30 @@ namespace RopeyDVD.Controllers
 
         public async Task<IActionResult> MemberDVD(int? id)
         {
+            //Checking if id is null
             if (id == null)
             {
                 return NotFound();
             }
 
+            //Getting date time of a month ago
             DateTime localDate = DateTime.Now.AddDays(-31);
 
+            //Finding Member using id
             var member = await _context.Member.FindAsync(id);
 
+            //Joining Member wiht DVDCopy and DVDtitle
             var @memberDetails = _context.Member.Where(a => a.MembershipNumber == id)
-                .Join(
-            _context.Loan,
-            Member => Member.MembershipNumber,
-            Loan => Loan.MemberNumber,
-            (Member, Loan) => new
-            {
-                Member,Loan, DateOut = Loan.DateOut,
-            }
-            ).Join(
+            .Join(
+                _context.Loan,
+                Member => Member.MembershipNumber,
+                Loan => Loan.MemberNumber,
+                (Member, Loan) => new
+                {
+                    Member,Loan, DateOut = Loan.DateOut,
+                }
+            )
+            .Join(
                 _context.DVDCopy,
                 DVDCopy => DVDCopy.Loan.CopyNumber,
                 Loan => Loan.CopyNumber,
@@ -47,7 +54,7 @@ namespace RopeyDVD.Controllers
                 {
                     DVDCopy, Loan,
                 }
-                ).Join(
+            ).Join(
                 _context.DVDTitle,
                 DVDCopy => DVDCopy.Loan.DVDNumber,
                 DVDTitle => DVDTitle.DVDNumber,
@@ -57,11 +64,9 @@ namespace RopeyDVD.Controllers
                     DateOut = DVDCopy.DVDCopy.DateOut,DVDTitle,
                 }
                 )
-            .Where(a => a.DateOut >= localDate).ToList();
+            .Where(a => a.DateOut >= localDate).ToList();       // Join table where date out of loan is greater than a month ago
 
             List<MemberDVD> memberDVD = new List<MemberDVD>();
-
-
             foreach (var DVD in memberDetails)
             {
                 memberDVD.Add(new MemberDVD()
@@ -70,13 +75,15 @@ namespace RopeyDVD.Controllers
                     CopyNumber = DVD.DVDCopy.Loan.CopyNumber,
                 });
             }
-
             return View(memberDVD);
 
         }
 
+
+        // Returns member list along witht their total number of loans and their respective category
         public async Task<IActionResult> MemberList()
         {
+            //Joining member with MembershipCategories table
             var memberList = _context.Member
                 .Join(
             _context.MembershipCategories,
@@ -146,6 +153,8 @@ namespace RopeyDVD.Controllers
             return View("MemberList", memberDVD);
 
         }
+
+        //Displays DVD loaned by user
         public async Task<IActionResult> MemberDVDLoan()
         {
             var lastLoan = DateTime.Now.AddDays(-31);

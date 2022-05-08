@@ -21,66 +21,73 @@ namespace RopeyDVD.Controllers
             return View();
         }
 
+
+        //Method to view all actors present in the database
         public async Task<IActionResult> ViewActors()
         {
-            return View(await _context.Actors.ToListAsync());
+            return View(await _context.Actors.ToListAsync());   //returns actor list to View
         }
 
 
-        public async Task<IActionResult> details(int? id)
+        // Method to display actor details to the user
+        public async Task<IActionResult> Details(int? id)
         {
-
+            //checking if id is null
             if (id == null)
             {
                 return NotFound();
             }
 
-            //var @module =  _context.CastMember
-            //    .Where(m => m.ActorNumber == id);
+            var actor= await _context.Actors.FindAsync(id); //finding the actor using the id passed into the controller
 
-            var actor= await _context.Actors.FindAsync(id);
 
+            //Joining Castmember table with DVDTitle 
             var @actorDetails =  _context.CastMember.Where(a =>a.ActorNumber == id)
             .Join(
-        _context.DVDTitle,
-        CastMember => CastMember.DVDNumber,
-        DVDTitle => DVDTitle.DVDNumber,
-        (CastMember, DVDTitle) => new
-        {
-            DVDName = DVDTitle.DVDName,
-            ActorNumber = CastMember.ActorNumber,
-        }
-    ).ToList();
+            _context.DVDTitle,
+            CastMember => CastMember.DVDNumber,
+            DVDTitle => DVDTitle.DVDNumber,
+            (CastMember, DVDTitle) => new
+            {
+                DVDName = DVDTitle.DVDName,
+                ActorNumber = CastMember.ActorNumber,
+            }
+            ).ToList();
             
+            //if actor is not found it redirects to not found
             if (@actorDetails == null)
             {
                 return NotFound();
             }
 
-            var DVDName = actorDetails.Select(x => x.DVDName);
-            var ActorNumber = actorDetails.Select(x => x.ActorNumber);
+            var DVDName = actorDetails.Select(x => x.DVDName);          //Inserting all DVDName to variable
+            var ActorNumber = actorDetails.Select(x => x.ActorNumber);  //Inserting all ActorNumber to variable
 
-            ActorDetailsViewModel actorDetailsModel = new ActorDetailsViewModel()
+            //Storing data into ActorDetailsViewModel object
+            ActorDetailsViewModel actorDetailsModel = new ActorDetailsViewModel()   
             {
                 DVDName = DVDName,
                 ActorNumber = ActorNumber,
                 ActorName= actor.ActorFirstName + " " + actor.ActorSurname,
             };
-
+            
+            //returning actor details to view
             return View("ActorDetails", actorDetailsModel);
-            //return View(await _context.Actors.ToListAsync());
         }
 
+        //Method to display DVDCopies of an actor
         public async Task<IActionResult> DVDCopy(int? id)
         {
+            //Checking if id is null
             if (id == null)
             {
                 return NotFound();
             }
 
-            var @dvdDetails = _context.CastMember.Where(a => a.ActorNumber == id)
+            //Joining CastMember Table to DVDTitle, DVDCopy and Loan where Date returned is null
+            var dvdDetails = _context.CastMember.Where(a => a.ActorNumber == id)
                 .Join(
-            _context.DVDTitle,
+            _context.DVDTitle,                          //Joining DVDTitle
             CastMember => CastMember.DVDNumber,
             DVDTitle => DVDTitle.DVDNumber,
             (CastMember, DVDTitle) => new
@@ -89,7 +96,7 @@ namespace RopeyDVD.Controllers
                 DVDTitle
             }
             ).Join(
-            _context.DVDCopy,
+            _context.DVDCopy,                           //Joining DVDCopy
             DVDTitle => DVDTitle.DVDTitle.DVDNumber,
             DVDCopy => DVDCopy.DVDNumber,
             (DVDTitle, DVDCopy) => new
@@ -99,7 +106,7 @@ namespace RopeyDVD.Controllers
             }
             )
             .Join(
-            _context.Loan,
+            _context.Loan,                              //Joining Loan
             DVDCopy => DVDCopy.DVDCopy.CopyNumber,
             Loan => Loan.CopyNumber,
             (DVDCopy, Loan) => new
@@ -109,12 +116,12 @@ namespace RopeyDVD.Controllers
                 DVDCopy = DVDCopy.DVDCopy.CopyNumber,
             }
             )
-            .Where(a => a.DVDDate != null).ToList();
+            .Where(a => a.DVDDate != null).ToList();        //Checking if the DVDCopy is in loan or not
 
             var DVDTotal = dvdDetails.GroupBy(a => a.DVDName).Select(g => new { name = g.Key, count = g.Count() }).ToList();
+
+            //Creating DVDCopiesTotalViewModel object to pass data into view
             List<DVDCopiesTotalViewModel> copy = new List<DVDCopiesTotalViewModel>();
-
-
             foreach (var DVD in DVDTotal)
             {
                 copy.Add(new DVDCopiesTotalViewModel()
@@ -125,7 +132,7 @@ namespace RopeyDVD.Controllers
             }
 
 
-
+            //Returning copy into DVDCopy
             return View("DVDCopy", copy);
 
         }

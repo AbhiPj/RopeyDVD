@@ -46,60 +46,73 @@ namespace RopeyDVD.Controllers
 
         public async Task<IActionResult> UserDetails()
         {
-            ViewBag.User = TempData["user"];
+            ViewBag.User = TempData["user"];    //Passing data using ViewBag
             return View();
         }
 
-        // GET: Authentication/Login
+        // Method to log user into the system
         public IActionResult Login()
         {
-            return View();
+            return View();  //Returning user to Login View
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(UserLoginModel loginModel)
         {
+            //Finds user using Username
             var user = await _userManager.FindByNameAsync(loginModel.Username);
+            //Check if passwod if valid 
             if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
             {
-                var result = await _signInManager.PasswordSignInAsync(loginModel.Username, loginModel.Password, false,false);
+                var result = await _signInManager.PasswordSignInAsync(loginModel.Username, loginModel.Password, false,false);   //Sign in using the SignInManager
                 var userRoles = await _userManager.GetRolesAsync(user);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");   //Redirecting to home controller Index action
 
             }
-            ViewBag.ErrorMessage = "Invalid Email or password";
+
+            //Passing error messages to view
+            ViewBag.ErrorMessage = "Invalid Email or password";     
             return View("Login");
             //return RedirectToAction("Index", "Home");
         }
 
-        // GET: Authentication/RegisterUser
+        // Method to display Register assistant View
         public IActionResult Register()
         {
             return View();
         }
 
+
+        // Method to Register assistants into the system
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register( UserRegisterModel model)
         {
+            //Finding user using Username
             var userExists = await _userManager.FindByNameAsync(model.Username);
+
+            //Checking if user exists and displaying message if user exists
             if (userExists != null)
             {
                 ViewBag.ErrorMessage = "User already exists";
                 return View("Register");
             }
 
+            //Creating new user
             IdentityUser user = new()
             {
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.Username
             };
+
+            //Saving user to database
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
 
+            //Giving roles to user
             if (!await _roleManager.RoleExistsAsync(UserRoles.User))
                 await _roleManager.CreateAsync(new IdentityRole(UserRoles.User));
 
@@ -111,30 +124,39 @@ namespace RopeyDVD.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // GET: Authentication/RegisterAdmin
+        // Method to display register admin view
         public IActionResult RegisterAdmin()
         {
             return View();
         }
 
+
+        // Method to register manager into the system
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterAdmin(UserRegisterModel model)
         {
+            //Finding user using Username
             var userExists = await _userManager.FindByNameAsync(model.Username);
+
+            //Checking if user Exists
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
 
+            //New user object
             IdentityUser user = new()
             {
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.Username
             };
+
+            //Saving user to database
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
 
+            //Giving user roles
             if (!await _roleManager.RoleExistsAsync(UserRoles.Admin))
                 await _roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
             if (!await _roleManager.RoleExistsAsync(UserRoles.User))
@@ -152,44 +174,34 @@ namespace RopeyDVD.Controllers
 
         }
 
+        //Method to display Unauthorized access view
         public IActionResult UnauthorizedAccess()
         {
             return View();
         }
 
-
-        private JwtSecurityToken GetToken(List<Claim> authClaims)
-        {
-            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
-
-            var token = new JwtSecurityToken(
-                issuer: _configuration["JWT:ValidIssuer"],
-                audience: _configuration["JWT:ValidAudience"],
-                expires: DateTime.Now.AddHours(3),
-                claims: authClaims,
-                signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
-                );
-
-            return token;
-        }
-
+        //Method to log user out of the system
         public async Task<IActionResult> Logout()
         {
+            //signing out user using SignInManager
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
 
+        //Method to display edit user details into the edit user view
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditUser(string id)
             {
+            //Finding user using id
             var user = await _userManager.FindByIdAsync(id);
 
+            //Checking if user is found
             if (user == null)
             {
                 return View("NotFound");
             }
 
-
+            //New EditUserViewModel
             var model = new EditUserViewModel
             {
                 Id = user.Id,
@@ -200,12 +212,15 @@ namespace RopeyDVD.Controllers
             return View("EditUser",model);
         }
 
+        //Method to update user details 
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> EditUser(EditUserViewModel model)
         {
+            //Finding user using id
             var user = await _userManager.FindByIdAsync(model.Id);
 
+            //Checking if user exists
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"User with Id = {model.Id} cannot be found";
@@ -213,9 +228,9 @@ namespace RopeyDVD.Controllers
             }
             else
             {
+                //Updating user deatils
                 user.Email = model.Email;
                 user.UserName = model.UserName;
-
                 var result = await _userManager.UpdateAsync(user);
 
                 if (result.Succeeded)
@@ -232,11 +247,14 @@ namespace RopeyDVD.Controllers
             }
         }
 
+        //Method to delete user
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(string id)
         {
+            //Finding user using id
             var user = await _userManager.FindByIdAsync(id);
 
+            //checking if user is null
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"User Id = {id} cannot be found";
@@ -244,8 +262,8 @@ namespace RopeyDVD.Controllers
             }
             else
             {
+                //Deleting user
                 var result = await _userManager.DeleteAsync(user);
-
                 if (result.Succeeded)
                 {
                     return RedirectToAction("ListUsers","Home");
@@ -260,12 +278,14 @@ namespace RopeyDVD.Controllers
             }
         }
 
+        //Method to return List user page after cancel button is clicked
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CancelEditUser()
         {
             return RedirectToAction("ListUsers", "Home");
         }
 
+        //Method to return change password view
         [Authorize(Roles = "User")]
         [HttpGet]
         public IActionResult ChangePassword()
@@ -273,6 +293,7 @@ namespace RopeyDVD.Controllers
             return View();
         }
 
+        //Method to change password
         [Authorize(Roles = "User")]
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
@@ -289,9 +310,6 @@ namespace RopeyDVD.Controllers
                 var result = await _userManager.ChangePasswordAsync(user,
                     model.CurrentPassword, model.NewPassword);
 
-                // The new password did not meet the complexity rules or
-                // the current password is incorrect. Add these errors to
-                // the ModelState and rerender ChangePassword view
                 if (!result.Succeeded)
                 {
                     foreach (var error in result.Errors)
@@ -301,7 +319,7 @@ namespace RopeyDVD.Controllers
                     return View();
                 }
 
-                // Upon successfully changing the password refresh sign-in cookie
+                // after successfully changing the password refresh sign-in cookie
                 await _signInManager.RefreshSignInAsync(user);
                 return RedirectToAction("Index", "Home");
             }
