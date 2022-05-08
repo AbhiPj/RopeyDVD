@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RopeyDVD.Data;
+using RopeyDVD.Models;
 using RopeyDVD.Models.ViewModels;
 using System.Linq;
 
 namespace RopeyDVD.Controllers
 {
+    [Authorize(Roles =UserRoles.Admin)]
     public class ActorController : Controller
     {
         private readonly ApplicationDBContext _context;
@@ -23,6 +26,7 @@ namespace RopeyDVD.Controllers
         {
             return View(await _context.Actors.ToListAsync());
         }
+
 
         public async Task<IActionResult> details(int? id)
         {
@@ -120,7 +124,7 @@ namespace RopeyDVD.Controllers
                     Total = DVD.count,
                 });
             }
-       
+
 
 
             return View("DVDCopy", copy);

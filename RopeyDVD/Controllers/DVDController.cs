@@ -649,6 +649,49 @@ namespace RopeyDVD.Controllers
             return View("DVDLoan");
         }
 
+        public async Task<IActionResult> DVDCopyPreviousLoan()
+        {
+            var lastLoanDays = DateTime.Now.AddDays(-31);
+            var DVDCopyLoan = _context.DVDCopy
+                .Join(
+                 _context.Loan,
+                 DVDCopy => DVDCopy.CopyNumber,
+                 Loan => Loan.CopyNumber,
+                 (DVDCopy, Loan) => new
+                 {
+                     DVDCopy,
+                     Loan,
+                     DateOut = Loan.DateOut,
+                 }
+                 ).Join(
+                 _context.DVDTitle,
+                 DVDCopy => DVDCopy.DVDCopy.DVDNumber,
+                 DVDTitle => DVDTitle.DVDNumber,
+                 (DVDCopy, DVDTitle) => new
+                 {
+                     DVDCopy,
+                     DVDTitle,
+                 }
+                 )
+                .Where(a => a.DVDCopy.DateOut < lastLoanDays).OrderByDescending(c => c.DVDCopy.DateOut)
+                 .GroupBy(e => e.DVDCopy.DVDCopy.CopyNumber)
+            .Select(e => e.First());
 
+            List<PreviousDVDCopyViewModel> DVDCopyLoanList = new List<PreviousDVDCopyViewModel>();
+
+            foreach (var dvd in DVDCopyLoan)
+            {
+                var date = DateTime.Now.Day;
+                var NoOfDays = dvd.DVDCopy.DateOut.Day - date;
+                DVDCopyLoanList.Add(new PreviousDVDCopyViewModel()
+                {
+                    DVDName= dvd.DVDTitle.DVDName,
+                    CopyNumber = dvd.DVDCopy.DVDCopy.CopyNumber,
+                }); ;
+            }
+
+
+            return View("DVDCopyPreviousLoan", DVDCopyLoanList);
+        }
     }
 }

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "ViewActors";
+
 }
 
 <div class="admin-container">
@@ -32,9 +33,7 @@
                     @Html.DisplayFor(modelItem => item.ActorFirstName)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ActorNumber">Edit</a> |
-                    <a asp-action="details" asp-route-id="@item.ActorNumber">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ActorNumber">Delete</a>
+                    <a asp-action="details" asp-route-id="@item.ActorNumber">DVD Titles</a> |
                     <a asp-action="DVDCopy" asp-route-id="@item.ActorNumber">DVD Copies</a>
 
                 </td>

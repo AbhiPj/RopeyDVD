@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using RopeyDVD.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication;
 
 namespace RopeyDVD.Controllers
 {
@@ -18,14 +19,16 @@ namespace RopeyDVD.Controllers
     {
         private readonly ApplicationDBContext _context;
 
-
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+
         private readonly IConfiguration _configuration;
 
         public AuthenticationController(
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
+            SignInManager<IdentityUser> signInManager,
             ApplicationDBContext context,
             IConfiguration configuration)
         {
@@ -33,6 +36,7 @@ namespace RopeyDVD.Controllers
             _roleManager = roleManager;
             _configuration = configuration;
             _context = context;
+            _signInManager = signInManager;
         }
         public IActionResult Index()
         {
@@ -58,7 +62,15 @@ namespace RopeyDVD.Controllers
             var user = await _userManager.FindByNameAsync(loginModel.Username);
             if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
             {
+                var result = await _signInManager.PasswordSignInAsync(loginModel.Username, loginModel.Password, false,false);
                 var userRoles = await _userManager.GetRolesAsync(user);
+
+
+                //var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
+                //identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
+                //identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
+                //await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
+                //    new ClaimsPrincipal(identity));
 
                 var authClaims = new List<Claim>
                 {
@@ -81,12 +93,26 @@ namespace RopeyDVD.Controllers
                     Token = new JwtSecurityTokenHandler().WriteToken(token),
                     Expiration = token.ValidTo
                 };
-                Response.Cookies.Append("Token", userDetails.Token);
+                //Response.Cookies.Append("Token", userDetails.Token);
 
-                TempData["user"] = JsonConvert.SerializeObject(userDetails); 
-                return RedirectToAction("UserDetails");
+                //TempData["user"] = JsonConvert.SerializeObject(userDetails);
+
+
+                if (userRoles.Contains("Admin"))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else 
+                {
+                    return RedirectToAction("ViewActors", "Actor");
+                }
+
+                //return RedirectToAction("UserDetails");
+                return RedirectToAction("Index", "Home");
+
             }
             return RedirectToAction("UnauthorizedAccess");
+            //return RedirectToAction("Index", "Home");
         }
 
         // GET: Authentication/RegisterUser
@@ -112,6 +138,15 @@ namespace RopeyDVD.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
+
+            if (!await _roleManager.RoleExistsAsync(UserRoles.User))
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+
+            if (await _roleManager.RoleExistsAsync(UserRoles.User))
+            {
+                await _userManager.AddToRoleAsync(user, UserRoles.User);
+            }
+
             return RedirectToAction("Index", "Home");
         }
 
