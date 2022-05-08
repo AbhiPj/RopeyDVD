@@ -220,6 +220,7 @@ namespace RopeyDVD.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditUser(string id)
             {
             var user = await _userManager.FindByIdAsync(id);
@@ -240,6 +241,7 @@ namespace RopeyDVD.Controllers
             return View("EditUser",model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> EditUser(EditUserViewModel model)
         {
@@ -271,6 +273,7 @@ namespace RopeyDVD.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
@@ -297,18 +300,21 @@ namespace RopeyDVD.Controllers
                 return RedirectToAction("ListUsers", "Home");
             }
         }
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CancelEditUser()
         {
             return RedirectToAction("ListUsers", "Home");
         }
 
-
+        [Authorize(Roles = "User")]
         [HttpGet]
         public IActionResult ChangePassword()
         {
             return View();
         }
 
+        [Authorize(Roles = "User")]
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {

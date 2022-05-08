@@ -7,6 +7,7 @@ using RopeyDVD.Models.ViewModels;
 
 namespace RopeyDVD.Controllers
 {
+    [Authorize(Roles = "Admin, User")]
     public class DVDController : Controller
     {
         private readonly ApplicationDBContext _context;

@@ -10,10 +10,6 @@ namespace RopeyDVD.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
-
-
-
-
         public HomeController(SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager)
         {
@@ -37,7 +33,7 @@ namespace RopeyDVD.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
+        [Authorize(Roles = "Admin, User")]
         public IActionResult ListUsers()
         {
             var users = _userManager.Users.ToList();
