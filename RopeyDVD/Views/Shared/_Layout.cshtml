@@ -49,6 +49,7 @@
 
         .sidebar {
             position: fixed;
+            overflow-y:scroll;
             border-radius: 10px;
             height: 100%;
             width: 240px;
@@ -215,16 +216,75 @@
                 <span style="padding-left: 20px" class="logo_name">Ropey DVD</span>
             </div>
             <hr>
-            @*<li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-            </li>*@
+            @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+          <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Member" asp-action="index">Member</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Member" asp-action="MemberList">Member List</a>
+            </li>
+           <li class="nav-item has-submenu" >
+                <a class="nav-link" href="#" style="color:white;"> DVD
+                    <p>⯆</p>
+                </a>
+           <ul class="submenu collapse">
+                    <li><a class="nav-link" asp-area="" asp-controller="DVD" asp-action="DVDCopies">DVD Copies</a></li>
+                    <li><a class="nav-link" asp-area="" asp-controller="DVD" asp-action="AddDVDLoan">ADD DVD Loan</a></li>
+                    <li><a class="nav-link" asp-area="" asp-controller="DVD" asp-action="ReturnDVD">Return DVD</a></li>
+                    <li><a class="nav-link" asp-area="" asp-controller="DVD" asp-action="AddDVDTitle">Add DVD Title</a></li>
+                    <li><a class="nav-link" asp-area="" asp-controller="DVD" asp-action="DVDCopyList">Old DVD Copy</a></li>
+                    <li><a class="nav-link" asp-area="" asp-controller="DVD" asp-action="DVDLoan"> DVD Loan</a></li>
+            </ul>
+            </li>
+                   <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Member" asp-action="MemberDVDLoan">Member DVD Not Borrowed</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="DVD" asp-action="DVDCopyPreviousLoan">DVD Copy Not Borrowed</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ListUsers">Manage users</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="DVD" asp-action="DVDDetails"> DVD Details</a>
+            </li>
+            }
+
+ 
+
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Actor" asp-action="ViewActors">Actor</a>
+            </li>
+
+            @if(signInManager.IsSignedIn(User))
+            {
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Logout">Logout</a>
+              </li>
+            }
+            else
+            {
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="RegisterAdmin">Register Manager</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Register">Register Assistant</a>
+            </li>
+            }
+
+            @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+            {
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Member" asp-action="index">Member</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Member" asp-action="MemberList">Member List</a>
             </li>
-            <li class="nav-item has-submenu" >
+                <li class="nav-item has-submenu" >
                 <a class="nav-link" href="#" style="color:white;"> DVD
                     <p>⯆</p>
                 </a>
@@ -238,33 +298,19 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Actor" asp-action="ViewActors">Actor</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="RegisterAdmin">Register Admin</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Register">Register User</a>
-            </li>
-            @if(signInManager.IsSignedIn(User))
-            {
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="LogOut">Logout</a>
-              </li>
-            }
-            else
-            {
-              <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Login">Login</a>
-              </li>
-            }
-          
-              <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Member" asp-action="MemberDVDLoan">Member DVD Not Borrowed</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="DVD" asp-action="DVDCopyPreviousLoan">DVD Copy Not Borrowed</a>
             </li>
+             <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="ChangePassword">Change Password</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="DVD" asp-action="DVDDetails"> DVD Details</a>
+            </li>
+            }
+          
         </ul>
     </nav>
 

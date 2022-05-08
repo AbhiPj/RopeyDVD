@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<RopeyDVD.Models.Actor>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="admin-container">
+    <h1>DVD Cast member details</h1>
+    <table class="table" id="example">
+        <thead>
+            <tr>
+                 <th>
+                    @Html.DisplayNameFor(model => model.ActorNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActorFirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActorSurname)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActorNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActorFirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActorSurname)
+                    </td>
+                </tr>
+        }
+            </tbody>
+    </table>
+</div>

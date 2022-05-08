@@ -1,0 +1,48 @@
+﻿@model IEnumerable<RopeyDVD.Models.ViewModels.DVDDetailsViewModel>
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="admin-container">
+    <h1>DVDCopies</h1>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table" id="example">
+        <thead>
+            <tr>
+                 <th>
+                    @Html.DisplayNameFor(model => model.DVDName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.studio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.producer)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DVDName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.studio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.producer)
+                    </td>
+                    <td>
+                        <a asp-action="DVDCastMembers" asp-route-id="@item.DVDNumber">Cast members</a> 
+                    </td>
+                </tr>
+        }
+            </tbody>
+    </table>
+</div>

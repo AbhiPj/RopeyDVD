@@ -8,7 +8,6 @@ using System.Linq;
 
 namespace RopeyDVD.Controllers
 {
-    [Authorize(Roles =UserRoles.Admin)]
     public class ActorController : Controller
     {
         private readonly ApplicationDBContext _context;

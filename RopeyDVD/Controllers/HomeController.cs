@@ -9,16 +9,21 @@ namespace RopeyDVD.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
 
-        public HomeController(SignInManager<IdentityUser> signInManager)
+
+
+        public HomeController(SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
+
         }
 
         public IActionResult Index()
         {
-            var s = _signInManager.IsSignedIn(User);
             return View();
         }
 
@@ -31,6 +36,12 @@ namespace RopeyDVD.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult ListUsers()
+        {
+            var users = _userManager.Users.ToList();
+            return View(users);
         }
     }
 }

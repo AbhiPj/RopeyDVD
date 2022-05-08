@@ -31,6 +31,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcVmlld0FjdG9ycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Abhinav/Desktop/RopeyDVD/RopeyDVD/Views/Authentication/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abhinav/Desktop/RopeyDVD/RopeyDVD/Views/Authentication/EditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRWRpdFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Abhinav/Desktop/RopeyDVD/RopeyDVD/Views/Authentication/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -67,12 +75,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXEFkZERWRFRpdGxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Abhinav/Desktop/RopeyDVD/RopeyDVD/Views/DVD/DVDCastMembers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRENhc3RNZW1iZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Abhinav/Desktop/RopeyDVD/RopeyDVD/Views/DVD/DVDCopies.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRENvcGllcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Abhinav/Desktop/RopeyDVD/RopeyDVD/Views/DVD/DVDCopyPreviousLoan.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRENvcHlQcmV2aW91c0xvYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abhinav/Desktop/RopeyDVD/RopeyDVD/Views/DVD/DVDDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Abhinav/Desktop/RopeyDVD/RopeyDVD/Views/DVD/DVDLoan.cshtml]
@@ -101,6 +117,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Abhinav/Desktop/RopeyDVD/RopeyDVD/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abhinav/Desktop/RopeyDVD/RopeyDVD/Views/Home/ListUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0VXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Abhinav/Desktop/RopeyDVD/RopeyDVD/Views/Home/Privacy.cshtml]

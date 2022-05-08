@@ -19,41 +19,98 @@ namespace RopeyDVD.Controllers
             return View();
         }
 
-        /* public async Task<IActionResult> DVDDetails()
+         public async Task<IActionResult> DVDDetails()
          {
-             var @DVDDetails = _context.Member.Where(a => a.MembershipNumber == id)
-                 .Join(
-             _context.Loan,
-             Member => Member.MembershipNumber,
-             Loan => Loan.MemberNumber,
-             (Member, Loan) => new
-             {
-                 Member,
-                 Loan,
-                 DateOut = Loan.DateOut,
-             }
-             ).Join(
-                 _context.DVDCopy,
-                 DVDCopy => DVDCopy.Loan.CopyNumber,
-                 Loan => Loan.CopyNumber,
-                 (DVDCopy, Loan) => new
-                 {
-                     DVDCopy,
-                     Loan,
-                 }
-                 ).Join(
-                 _context.DVDTitle,
-                 DVDCopy => DVDCopy.Loan.DVDNumber,
-                 DVDTitle => DVDTitle.DVDNumber,
-                 (DVDCopy, DVDTitle) => new
-                 {
-                     DVDCopy,
-                     DateOut = DVDCopy.DVDCopy.DateOut,
-                     DVDTitle,
-                 }
-                 )
-             .Where(a => a.DateOut >= localDate).ToList();
-         }*/
+            var DVDDetails = _context.DVDTitle
+                .Join(
+            _context.Producers,
+            Producers => Producers.ProducerNumber,
+            DVDTitle => DVDTitle.ProducerNumber,
+            (DVDTitle, Producers) => new
+            {
+                Producers,
+                DVDTitle,
+            }
+            ).Join(
+            _context.Studios,
+            DVDTitle => DVDTitle.DVDTitle.StudioNumber,
+            Studios => Studios.StudioNumber,
+            (DVDTitle, Studio) => new
+            {
+                Studio,
+                DVDTitle,
+            }
+            ).OrderBy(a => a.DVDTitle.DVDTitle.DateReleased);
+            //.Join(
+            //_context.CastMember,
+            //DVDTitle => DVDTitle.DVDTitle.DVDTitle.DVDNumber,
+            //CastMember => CastMember.DVDNumber,
+            //(DVDTitle, CastMember) => new
+            //{
+            //    CastMember,
+            //    DVDTitle,
+            //}
+            //);
+
+            List<DVDDetailsViewModel> DVDDetailsList = new List<DVDDetailsViewModel>();
+
+            foreach (var dvd in DVDDetails)
+            {
+                DVDDetailsList.Add(new DVDDetailsViewModel()
+                {
+                    DVDName = dvd.DVDTitle.DVDTitle.DVDName,
+                    DVDNumber = dvd.DVDTitle.DVDTitle.DVDNumber,
+                    studio = dvd.DVDTitle.DVDTitle.Studio.StudioName,
+                    producer = dvd.DVDTitle.DVDTitle.Producer.ProducerName,
+                }); ;
+            }
+
+            return View("DVDDetails", DVDDetailsList);
+
+        }
+
+        public async Task<IActionResult> DVDCastMembers(int id)
+        {
+            //var DVDCastMember = _context.DVDTitle.Where(a => a.DVDNumber == id)
+            //    .Join(
+            //_context.CastMember,
+            //DVDTitle => DVDTitle.DVDNumber,
+            //CastMember => CastMember.DVDNumber,
+            //(DVDTitle, CastMember) => new
+            //{
+            //    CastMember,
+            //    DVDTitle,
+            //}
+            //);
+
+            var DVDCastMember = _context.CastMember.Where(a => a.DVDNumber == id)
+                .Join(
+            _context.Actors,
+            Actor => Actor.ActorNumber,
+            CastMember => CastMember.ActorNumber,
+            (Actor, CastMember) => new
+            {
+                CastMember,
+                Actor,
+            }
+            ).OrderBy(a => a.Actor.Actor.ActorSurname);
+
+            List<Actor> dvdActor = new List<Actor>();
+
+            foreach (var dvd in DVDCastMember)
+            {
+                dvdActor.Add(new Actor()
+                {
+                    ActorFirstName= dvd.Actor.Actor.ActorFirstName,
+                    ActorSurname = dvd.Actor.Actor.ActorSurname,
+                    ActorNumber = dvd.Actor.ActorNumber,
+                });
+            }
+
+
+
+            return View(dvdActor);
+        }
 
         public async Task<IActionResult> DVDCopies()
         {

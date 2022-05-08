@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using RopeyDVD.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RopeyDVD.Controllers
 {
@@ -66,46 +67,47 @@ namespace RopeyDVD.Controllers
                 var userRoles = await _userManager.GetRolesAsync(user);
 
 
+
                 //var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
                 //identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
                 //identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
                 //await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
                 //    new ClaimsPrincipal(identity));
 
-                var authClaims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                };
+                //var authClaims = new List<Claim>
+                //{
+                //    new Claim(ClaimTypes.Name, user.UserName),
+                //    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                //};
 
-                foreach (var userRole in userRoles)
-                {
-                    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                }
+                //foreach (var userRole in userRoles)
+                //{
+                //    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+                //}
 
-                var token = GetToken(authClaims);
+                //var token = GetToken(authClaims);
 
 
-                UserDetailsViewModel userDetails = new UserDetailsViewModel()
-                {
-                    UserName = user.UserName,
-                    Email = user.Email,
-                    Token = new JwtSecurityTokenHandler().WriteToken(token),
-                    Expiration = token.ValidTo
-                };
+                //UserDetailsViewModel userDetails = new UserDetailsViewModel()
+                //{
+                //    UserName = user.UserName,
+                //    Email = user.Email,
+                //    Token = new JwtSecurityTokenHandler().WriteToken(token),
+                //    Expiration = token.ValidTo
+                //};
                 //Response.Cookies.Append("Token", userDetails.Token);
 
                 //TempData["user"] = JsonConvert.SerializeObject(userDetails);
 
 
-                if (userRoles.Contains("Admin"))
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                else 
-                {
-                    return RedirectToAction("ViewActors", "Actor");
-                }
+                //if (userRoles.Contains("Admin"))
+                //{
+                //    return RedirectToAction("Index", "Home");
+                //}
+                //else 
+                //{
+                //    return RedirectToAction("ViewActors", "Actor");
+                //}
 
                 //return RedirectToAction("UserDetails");
                 return RedirectToAction("Index", "Home");
@@ -211,5 +213,136 @@ namespace RopeyDVD.Controllers
 
             return token;
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> EditUser(string id)
+            {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return View("NotFound");
+            }
+
+
+            var model = new EditUserViewModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                UserName = user.UserName,
+            };
+
+            return View("EditUser",model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(EditUserViewModel model)
+        {
+            var user = await _userManager.FindByIdAsync(model.Id);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with Id = {model.Id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                user.Email = model.Email;
+                user.UserName = model.UserName;
+
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListUsers", "Home");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View(model);
+            }
+        }
+
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User Id = {id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                var result = await _userManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListUsers","Home");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return RedirectToAction("ListUsers", "Home");
+            }
+        }
+        public async Task<IActionResult> CancelEditUser()
+        {
+            return RedirectToAction("ListUsers", "Home");
+        }
+
+
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return RedirectToAction("Login");
+                }
+
+                // ChangePasswordAsync changes the user password
+                var result = await _userManager.ChangePasswordAsync(user,
+                    model.CurrentPassword, model.NewPassword);
+
+                // The new password did not meet the complexity rules or
+                // the current password is incorrect. Add these errors to
+                // the ModelState and rerender ChangePassword view
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return View();
+                }
+
+                // Upon successfully changing the password refresh sign-in cookie
+                await _signInManager.RefreshSignInAsync(user);
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(model);
+        }
+
     }
 }
