@@ -1,34 +1,38 @@
 ﻿@model IEnumerable<RopeyDVD.Models.ViewModels.DVDLoanViewModel>
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<h1> DVD Loan Date total</h1>
+    @*
+        For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    *@
+    @{
+    }
 
-<table class="table" id="example">
-    <thead>
-        <tr>
-             <th>
-                @Html.DisplayNameFor(model => model.DateOut)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalLoans)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOut)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalLoans)
-            </td>
-        </tr>
+
+    <div class="admin-container">
+        <h1> DVD Loan Date total</h1>
+
+        <table class="hover" id="example">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateOut)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalLoans)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOut)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalLoans)
+                    </td>
+                </tr>
 }
-    </tbody>
-</table>
+            </tbody>
+        </table>
+    </div>

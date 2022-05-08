@@ -8,157 +8,157 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RopeyDVD
 build_property.RootNamespace = RopeyDVD
-build_property.ProjectDir = C:\Users\user\Documents\GitHub\RopeyDVD\RopeyDVD\
+build_property.ProjectDir = E:\dotNet\RopeyDVD\RopeyDVD\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\user\Documents\GitHub\RopeyDVD\RopeyDVD
+build_property.MSBuildProjectDirectory = E:\dotNet\RopeyDVD\RopeyDVD
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Actor/ActorDetails.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Actor/ActorDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcQWN0b3JEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Actor/DVDCopy.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Actor/DVDCopy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcRFZEQ29weS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Actor/View.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Actor/View.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Actor/ViewActors.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Actor/ViewActors.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcVmlld0FjdG9ycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Authentication/ChangePassword.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Authentication/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Authentication/EditUser.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Authentication/EditUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRWRpdFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Authentication/Index.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Authentication/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Authentication/Login.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Authentication/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Authentication/Register.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Authentication/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Authentication/RegisterAdmin.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Authentication/RegisterAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXJBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Authentication/RegisterUser.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Authentication/RegisterUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXJVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Authentication/UnauthorizedAccess.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Authentication/UnauthorizedAccess.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cVW5hdXRob3JpemVkQWNjZXNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Authentication/UserDetails.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Authentication/UserDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cVXNlckRldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/AddDVDLoan.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/AddDVDLoan.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXEFkZERWRExvYW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/AddDVDTitle.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/AddDVDTitle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXEFkZERWRFRpdGxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/DVDCastMembers.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/DVDCastMembers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRENhc3RNZW1iZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/DVDCopies.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/DVDCopies.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRENvcGllcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/DVDCopyPreviousLoan.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/DVDCopyPreviousLoan.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRENvcHlQcmV2aW91c0xvYW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/DVDDetails.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/DVDDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/DVDLoan.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/DVDLoan.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRExvYW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/DVDLoanDetails.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/DVDLoanDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRExvYW5EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/DVDLoanList.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/DVDLoanList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXERWRExvYW5MaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/LoanDate.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/LoanDate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXExvYW5EYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/OldDVDList.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/OldDVDList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXE9sZERWRExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/DVD/ReturnDVD.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/DVD/ReturnDVD.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRFZEXFJldHVybkRWRC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Home/Index.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Home/ListUsers.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Home/ListUsers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0VXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Home/Privacy.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Member/Index.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Member/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Member/MemberDVD.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Member/MemberDVD.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXE1lbWJlckRWRC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Member/MemberDVDLoan.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Member/MemberDVDLoan.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXE1lbWJlckRWRExvYW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Member/MemberList.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Member/MemberList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXE1lbWJlckxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Shared/Error.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/_ViewImports.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/_ViewStart.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/Documents/GitHub/RopeyDVD/RopeyDVD/Views/Shared/_Layout.cshtml]
+[E:/dotNet/RopeyDVD/RopeyDVD/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-la23zskyrt
