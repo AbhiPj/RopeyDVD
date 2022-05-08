@@ -276,26 +276,9 @@
                 <a class="nav-link" asp-area="" asp-controller="Actor" asp-action="ViewActors">Actor</a>
             </li>
 
-            @if(signInManager.IsSignedIn(User))
-            {
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Logout">Logout</a>
-              </li>
-            }
-            else
-            {
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="RegisterAdmin">Register Manager</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Register">Register Assistant</a>
-            </li>
-            }
+          
 
-            @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+            @if (signInManager.IsSignedIn(User) && User.IsInRole("User") && !User.IsInRole("Admin"))
             {
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Member" asp-action="index">Member</a>
@@ -327,6 +310,24 @@
             </li>
              <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="DVD" asp-action="DVDDetails"> DVD Details</a>
+            </li>
+            }
+              @if(signInManager.IsSignedIn(User))
+            {
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Logout">Logout</a>
+              </li>
+            }
+            else
+            {
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="RegisterAdmin">Register Manager</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Register">Register Assistant</a>
             </li>
             }
           

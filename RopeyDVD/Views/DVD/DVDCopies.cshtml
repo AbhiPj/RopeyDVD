@@ -37,10 +37,7 @@
                         @Html.DisplayFor(modelItem => item.DatePurchased)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.CopyNumber">Edit</a> |
                         <a asp-action="DVDCopyLoan" asp-route-id="@item.CopyNumber">Previous loan</a> |
-                        <a asp-action="Details" asp-route-id="@item.CopyNumber">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.CopyNumber">Delete</a>
                     </td>
                 </tr>
         }

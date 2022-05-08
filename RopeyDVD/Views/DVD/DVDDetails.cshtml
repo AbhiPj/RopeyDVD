@@ -8,9 +8,6 @@
 }
 <div class="admin-container">
     <h1>DVDCopies</h1>
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
     <table class="hover" id="example">
         <thead>
             <tr>
@@ -23,6 +20,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.producer)
                 </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
