@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using RopeyDVD.Data;
 using RopeyDVD.Models;
 using RopeyDVD.Models.ViewModels;
+using System.Linq;
 
 namespace RopeyDVD.Controllers
 {
@@ -175,40 +176,9 @@ namespace RopeyDVD.Controllers
 
         public async Task<IActionResult> AddDVDLoan()
         {
-            var DVDCopy = await _context.DVDCopy.ToListAsync();
-            var LoanType = await _context.LoanTypes.ToListAsync();
-            var Member = await _context.Member.ToListAsync();
-
-            var DVDCopyList = new List<SelectListItem>();
-            DVDCopyList = DVDCopy.Select(a => new SelectListItem()
-            {
-                Value = a.CopyNumber.ToString(),
-                Text = a.CopyNumber.ToString()
-            }).ToList();
-
-            var defItem = new SelectListItem()
-            {
-                Value = "",
-                Text = "select"
-            };
-            DVDCopyList.Insert(0, defItem);
-
-
-            var LoanTypeList = new List<SelectListItem>();
-            LoanTypeList = LoanType.Select(a => new SelectListItem()
-            {
-                Value = a.LoanTypeNumber.ToString(),
-                Text = a.LoanDuration.ToString()
-            }).ToList();
-            LoanTypeList.Insert(0, defItem);
-
-            var MemberList = new List<SelectListItem>();
-            MemberList = Member.Select(a => new SelectListItem()
-            {
-                Value = a.MembershipNumber.ToString(),
-                Text = a.MembershipLastName.ToString()
-            }).ToList();
-            MemberList.Insert(0, defItem);
+            var DVDCopyList = GetDVDCopyNotLoaned();
+            var LoanTypeList = GetLoanType();
+            var MemberList = GetMember();
 
             ViewData["DVDCopy"] = DVDCopyList;
             ViewData["LoanTypeList"] = LoanTypeList;
@@ -220,40 +190,11 @@ namespace RopeyDVD.Controllers
 
         public async Task<IActionResult> Create(AddDVDLoan addDVDLoan)
         {
-            var DVDCopy = await _context.DVDCopy.ToListAsync();
-            var LoanType = await _context.LoanTypes.ToListAsync();
-            var Member = await _context.Member.ToListAsync();
 
-            var DVDCopyList = new List<SelectListItem>();
-            DVDCopyList = DVDCopy.Select(a => new SelectListItem()
-            {
-                Value = a.CopyNumber.ToString(),
-                Text = a.CopyNumber.ToString()
-            }).ToList();
+            var DVDCopyList = GetDVDCopyNotLoaned();
+            var LoanTypeList = GetLoanType();
+            var MemberList = GetMember();
 
-            var defItem = new SelectListItem()
-            {
-                Value = "",
-                Text = "select"
-            };
-            DVDCopyList.Insert(0, defItem);
-
-
-            var LoanTypeList = new List<SelectListItem>();
-            LoanTypeList = LoanType.Select(a => new SelectListItem()
-            {
-                Value = a.LoanTypeNumber.ToString(),
-                Text = a.LoanDuration.ToString()
-            }).ToList();
-            LoanTypeList.Insert(0, defItem);
-
-            var MemberList = new List<SelectListItem>();
-            MemberList = Member.Select(a => new SelectListItem()
-            {
-                Value = a.MembershipNumber.ToString(),
-                Text = a.MembershipLastName.ToString()
-            }).ToList();
-            MemberList.Insert(0, defItem);
 
             ViewData["DVDCopy"] = DVDCopyList;
             ViewData["LoanTypeList"] = LoanTypeList;
@@ -422,6 +363,78 @@ namespace RopeyDVD.Controllers
             }
             return RedirectToAction("ReturnDVD");
         }
+
+        public List<SelectListItem> GetDVDCopyNotLoaned()
+        {
+            var DVDCopy = _context.DVDCopy.ToList();
+            var loan = _context.Loan.Where(a => a.DateReturned == null);
+            var DVDCopyList = new List<SelectListItem>();
+            var a = _context.DVDCopy.ToList();
+            foreach (var dvd in a.ToList())
+            {
+                foreach (var l in loan.ToList())
+                {
+                    if (l.CopyNumber == dvd.CopyNumber)
+                    {
+                        var item = DVDCopy.Find(x => x.CopyNumber == dvd.CopyNumber);
+                        DVDCopy.Remove(item);
+                        break;
+                    }
+                }
+            }
+            var group = DVDCopy.GroupBy(a => a.CopyNumber).Select(g => new { name = g.Key, count = g.Count() }).ToList();
+
+            DVDCopyList = group.Select(a => new SelectListItem()
+            {
+                Value = a.name.ToString(),
+                Text = a.name.ToString()
+            }).ToList();
+
+            var defItem = new SelectListItem()
+            {
+                Value = "",
+                Text = "select"
+            };
+            DVDCopyList.Insert(0, defItem);
+
+            return DVDCopyList;
+        }
+        public List<SelectListItem> GetLoanType()
+        {
+            var defItem = new SelectListItem()
+            {
+                Value = "",
+                Text = "select"
+            };
+            var LoanType = _context.LoanTypes.ToList();
+            var LoanTypeList = new List<SelectListItem>();
+            LoanTypeList = LoanType.Select(a => new SelectListItem()
+            {
+                Value = a.LoanTypeNumber.ToString(),
+                Text = a.LoanDuration.ToString()
+            }).ToList();
+            LoanTypeList.Insert(0, defItem);
+            return LoanTypeList;
+        }
+        public List<SelectListItem> GetMember()
+        {
+            var defItem = new SelectListItem()
+            {
+                Value = "",
+                Text = "select"
+            };
+
+            var Member = _context.Member.ToList();
+            var MemberList = new List<SelectListItem>();
+            MemberList = Member.Select(a => new SelectListItem()
+            {
+                Value = a.MembershipNumber.ToString(),
+                Text = a.MembershipLastName.ToString()
+            }).ToList();
+            MemberList.Insert(0, defItem);
+            return MemberList;
+        }
+
 
 
         public async Task<IActionResult> AddDVDTitle()

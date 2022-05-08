@@ -80,7 +80,7 @@
 <div id="errModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" id="errClose">&times;</span>
         <h2>Error:</h2>
         <p>@ViewBag.ErrorMessage</p>
     </div>
@@ -93,26 +93,26 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Age" class="control-label"></label>
-                    <input asp-for="Age" class="form-control" />
+                    <input asp-for="Age" class="form-control" required/>
                     <span asp-validation-for="Age" class="text-danger"></span>
                 </div>
 
 
                 <div class="form-group">
                     <label asp-for="CopyNumber" class="control-label"></label>
-                    <select asp-for="CopyNumber" class="form-select" asp-items="ViewBag.DVDCopy"></select>
+                    <select asp-for="CopyNumber" class="form-select" asp-items="ViewBag.DVDCopy" required></select>
                     <span asp-validation-for="CopyNumber" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="LoanType" class="control-label">Loan (In Days)</label>
-                    <select asp-for="LoanType" class="form-select" asp-items="ViewBag.LoanTypeList"></select>
+                    <select asp-for="LoanType" class="form-select" asp-items="ViewBag.LoanTypeList" ></select>
                     <span asp-validation-for="LoanType" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="MemberNumber" class="control-label"></label>
-                    <select asp-for="MemberNumber" class="form-select" asp-items="ViewBag.MemberList"></select>
+                    <select asp-for="MemberNumber" class="form-select" asp-items="ViewBag.MemberList" required></select>
                     <span asp-validation-for="MemberNumber" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -132,15 +132,28 @@
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
+    var span2 = document.getElementById("errClose");
+
+    
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
+        window.location.href="/DVD/AddDVDLoan";
+    }
+    span2.onclick = function () {
+    modal.style.display = "none";
+    window.location.href="/DVD/AddDVDLoan";
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
+        window.location.href="/DVD/AddDVDLoan";
+            modal.style.display = "none";
+        }
+         if (event.target == errModal) {
+        window.location.href="/DVD/AddDVDLoan";
             modal.style.display = "none";
         }
     }

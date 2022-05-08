@@ -1,9 +1,25 @@
 ﻿@model RopeyDVD.Models.UserRegisterModel
 
 @{
-    ViewData["Title"] = "Register";
+}
+@if (ViewBag.ErrorMessage != null)
+{
+<script type="text/javascript">
+            window.onload = function () {
+               modal.style.display = "block";
+            };
+</script>
 }
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Error</h2>
+        <p>@ViewBag.ErrorMessage</p>
+    </div>
+</div>
 
 <div class="admin-container">
     <h1>Register</h1>
@@ -16,17 +32,17 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Username" class="control-label"></label>
-                    <input asp-for="Username" class="form-control" />
+                    <input asp-for="Username" class="form-control" required/>
                     <span asp-validation-for="Username" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control" />
+                    <input asp-for="Email" class="form-control" required/>
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Password" class="control-label"></label>
-                    <input asp-for="Password" class="form-control" />
+                    <input asp-for="Password" class="form-control" required/>
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -41,3 +57,29 @@
     </div>
 
 </div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+        window.location.href="/Authentication/Register";
+    }
+    span2.onclick = function () {
+    modal.style.display = "none";
+    window.location.href="/Authentication/Register";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+        window.location.href="/Authentication/Register";
+            modal.style.display = "none";
+        }
+    }
+</script>

@@ -76,7 +76,7 @@
 
                 <div class="form-group">
                     <label asp-for="CopyNumber" class="control-label">DVD Copy Number</label>
-                    <select asp-for="CopyNumber" class="form-select" asp-items="ViewBag.DVDList"></select>
+                    <select asp-for="CopyNumber" class="form-select" asp-items="ViewBag.DVDList" required></select>
                     <span asp-validation-for="CopyNumber" class="text-danger"></span>
                 </div>
 

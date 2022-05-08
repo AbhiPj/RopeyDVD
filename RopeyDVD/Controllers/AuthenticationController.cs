@@ -65,55 +65,11 @@ namespace RopeyDVD.Controllers
             {
                 var result = await _signInManager.PasswordSignInAsync(loginModel.Username, loginModel.Password, false,false);
                 var userRoles = await _userManager.GetRolesAsync(user);
-
-
-
-                //var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
-                //identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
-                //identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
-                //await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
-                //    new ClaimsPrincipal(identity));
-
-                //var authClaims = new List<Claim>
-                //{
-                //    new Claim(ClaimTypes.Name, user.UserName),
-                //    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                //};
-
-                //foreach (var userRole in userRoles)
-                //{
-                //    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                //}
-
-                //var token = GetToken(authClaims);
-
-
-                //UserDetailsViewModel userDetails = new UserDetailsViewModel()
-                //{
-                //    UserName = user.UserName,
-                //    Email = user.Email,
-                //    Token = new JwtSecurityTokenHandler().WriteToken(token),
-                //    Expiration = token.ValidTo
-                //};
-                //Response.Cookies.Append("Token", userDetails.Token);
-
-                //TempData["user"] = JsonConvert.SerializeObject(userDetails);
-
-
-                //if (userRoles.Contains("Admin"))
-                //{
-                //    return RedirectToAction("Index", "Home");
-                //}
-                //else 
-                //{
-                //    return RedirectToAction("ViewActors", "Actor");
-                //}
-
-                //return RedirectToAction("UserDetails");
                 return RedirectToAction("Index", "Home");
 
             }
-            return RedirectToAction("UnauthorizedAccess");
+            ViewBag.ErrorMessage = "Invalid Email or password";
+            return View("Login");
             //return RedirectToAction("Index", "Home");
         }
 
@@ -129,7 +85,10 @@ namespace RopeyDVD.Controllers
         {
             var userExists = await _userManager.FindByNameAsync(model.Username);
             if (userExists != null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
+            {
+                ViewBag.ErrorMessage = "User already exists";
+                return View("Register");
+            }
 
             IdentityUser user = new()
             {
