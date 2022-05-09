@@ -55,7 +55,8 @@ namespace RopeyDVD.Controllers
                     DVDNumber = dvd.DVDTitle.DVDTitle.DVDNumber,
                     studio = dvd.DVDTitle.DVDTitle.Studio.StudioName,
                     producer = dvd.DVDTitle.DVDTitle.Producer.ProducerName,
-                }); ;
+                    DateReleased= dvd.DVDTitle.DVDTitle.DateReleased.ToString("dd/MM/yyyy"),
+                }); 
             }
 
             //returning DVD details to DVDDetails view
@@ -640,7 +641,7 @@ namespace RopeyDVD.Controllers
                     DVDNumber = dvd.DVDTitle.DVDNumber,
                     DVDTitle = dvd.DVDTitle.DVDName,
                     CopyNumber = dvd.DVDCopy.CopyNumber,
-                    DatePurchased = dvd.DVDCopy.DatePurchased,
+                    DatePurchased = dvd.DVDCopy.DatePurchased.ToString("dd/MM/yyyy"),
                 });
             }
             //Returning dvdCopyViewModel to OldDVDList

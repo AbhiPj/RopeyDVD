@@ -13,9 +13,6 @@
                     @Html.DisplayNameFor(model => model.CopyNumber)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DVDTitle)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.DatePurchased)
                 </th>
                 <th></th>
@@ -28,13 +25,10 @@
                         @Html.DisplayFor(modelItem => item.CopyNumber)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.DVDTitle.DVDNumber)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.DatePurchased)
                     </td>
                     <td>
-                        <a asp-action="DVDCopyLoan" asp-route-id="@item.CopyNumber">Previous loan</a> |
+                        <a asp-action="DVDCopyLoan" asp-route-id="@item.CopyNumber">Previous loan</a> 
                     </td>
                 </tr>
         }

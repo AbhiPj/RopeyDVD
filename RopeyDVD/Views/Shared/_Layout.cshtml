@@ -69,6 +69,11 @@
         height: 40%;
     }
 
+    .modal-content p{
+        margin-top:10px;
+        font-size:20px;
+    }
+
     /* The Close Button */
     .close {
         color: #aaa;
@@ -115,7 +120,8 @@
             border-radius: 10px;
             height: 100%;
             width: 240px;
-            background: #33b2f8;
+            /*background: #33b2f8;*/
+            background:#1a1c1d;
             transition: all 0.5s ease;
         }
 
@@ -219,6 +225,8 @@
             margin-top: 10px;
         }
     </style>
+
+
     
     <script>
         document.addEventListener("DOMContentLoaded", function(){
@@ -289,8 +297,8 @@
                         <p>⯆</p>
                     </a>
                      <ul class="submenu collapse">
-                         <li><a class="nav-link" asp-area="" asp-controller="Member" asp-action="index">Member</a></li>
-                         <li><a class="nav-link" asp-area="" asp-controller="Member" asp-action="MemberList">Member List</a></li>
+                         <li><a class="nav-link" asp-area="" asp-controller="Member" asp-action="index">Member Loan Details</a></li>
+                         <li><a class="nav-link" asp-area="" asp-controller="Member" asp-action="MemberList">View Member Total Loans</a></li>
                         <li><a class="nav-link" asp-area="" asp-controller="Member" asp-action="MemberDVDLoan">Member DVD Not Borrowed</a></li>
                      </ul>
                </li>
@@ -335,10 +343,10 @@
                     </a>
                     <ul class="submenu collapse">
                         <li>
-                            <a class="nav-link" asp-area="" asp-controller="Member" asp-action="index">Member</a>
+                            <a class="nav-link" asp-area="" asp-controller="Member" asp-action="index">Member Loan details</a>
                         </li>
                         <li>
-                            <a class="nav-link" asp-area="" asp-controller="Member" asp-action="MemberList">Member List</a>
+                            <a class="nav-link" asp-area="" asp-controller="Member" asp-action="MemberList">View Member total loans</a>
                         </li>
                         <li>
                             <a class="nav-link" asp-area="" asp-controller="Member" asp-action="MemberDVDLoan">Member DVD Not Borrowed</a>

@@ -10,9 +10,7 @@
     <table class="hover" id="example">
         <thead>
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.MembershipCategory)
-                </th>
+
                 <th>
                     @Html.DisplayNameFor(model => model.MembershipLastName)
                 </th>
@@ -22,18 +20,13 @@
                 <th>
                     @Html.DisplayNameFor(model => model.MembershipAddress)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MemberDOB)
-                </th>
+
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach (var item in Model) {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MembershipCategory.MembershipCategoryNumber)
-                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.MembershipLastName)
                     </td>
@@ -43,9 +36,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.MembershipAddress)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MemberDOB)
-                    </td>
+
                     <td>
                         <a asp-action="MemberDVD" asp-route-id="@item.MembershipNumber">View Loans</a> 
                     </td>

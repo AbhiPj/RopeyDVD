@@ -1,7 +1,6 @@
 ﻿@model RopeyDVD.Models.UserLoginModel
 
 @{
-    ViewData["Title"] = "Login";
 }
 
 @if (ViewBag.ErrorMessage != null)
@@ -27,7 +26,6 @@
 <div class="admin-container">
     <div style="display:flex;flex-direction:column">
         <h1>Login</h1>
-        <h4>UserLoginModel</h4>
         <hr />
         <div class="row">
             <div class="col-md-6">
@@ -48,10 +46,6 @@
                     </div>
                 </form>
             </div>
-        </div>
-
-        <div>
-            <a asp-action="Index">Back to List</a>
         </div>
     </div>
 

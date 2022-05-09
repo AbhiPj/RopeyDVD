@@ -6,6 +6,6 @@
         public string producer { get; set; }
         public string DVDName { get; set; }
         public int DVDNumber { get; set; }
-
+        public string DateReleased { get; set; }
     }
 }

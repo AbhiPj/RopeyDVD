@@ -18,7 +18,8 @@ namespace RopeyDVD.Controllers
             _userManager = userManager;
 
         }
-
+        
+        //Method to Return Home page
         public IActionResult Index()
         {
             return View();
@@ -30,6 +31,8 @@ namespace RopeyDVD.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        //Lists all the users in the database
         [Authorize(Roles = "Admin, User")]
         public IActionResult ListUsers()
         {

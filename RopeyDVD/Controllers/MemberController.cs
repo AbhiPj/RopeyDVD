@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RopeyDVD.Data;
+using RopeyDVD.Models;
 using RopeyDVD.Models.ViewModels;
 
 namespace RopeyDVD.Controllers
@@ -96,7 +97,7 @@ namespace RopeyDVD.Controllers
             }
             );
 
-            var q =
+            var MemberQuery =
                 from m in _context.Member
                 join L in _context.Loan on m.MembershipNumber equals L.MemberNumber into ps
                 from p in ps.DefaultIfEmpty()
@@ -104,10 +105,11 @@ namespace RopeyDVD.Controllers
             List<MemberListViewModel> memberDVD = new List<MemberListViewModel>();
             var DVDTotal = memberList.GroupBy(a => a.Member.MembershipFirstName).Select(g => new { name = g.Key, count = g.Count() }).ToList();
 
+            //Getting the total count of the DVD loan for member
             foreach (var member in DVDTotal)
             {
                 var counter = 0;
-                foreach (var item in q)
+                foreach (var item in MemberQuery)
                 {
                     
                     if(member.name == item.Member.MembershipFirstName)
@@ -157,7 +159,9 @@ namespace RopeyDVD.Controllers
         //Displays DVD loaned by user
         public async Task<IActionResult> MemberDVDLoan()
         {
-            var lastLoan = DateTime.Now.AddDays(-31);
+            var lastLoan = DateTime.Now.AddDays(-31);   //Date a month ago
+
+            //Joining Member to multiple tables
             var MemberDVD = _context.Member
                 .Join(
                  _context.Loan,
@@ -188,28 +192,82 @@ namespace RopeyDVD.Controllers
                      DVDTitle,
                  }
                  )
-                .Where(a => a.DVDCopy.DVDCopy.DateOut < lastLoan).OrderBy(c => c.DVDCopy.DVDCopy.DateOut)
-                 .GroupBy(e => e.DVDCopy.DVDCopy.Member.MembershipNumber)
-            .Select(e => e.First());
+                .OrderByDescending(c => c.DVDCopy.DVDCopy.DateOut);     //Order by Date out of loan
 
-            List<MemberDVDLoan> memberDVDList = new List<MemberDVDLoan>();
+            //Getting member where dvd is loaned before one monhth
+            var group = MemberDVD.GroupBy(a => a.DVDCopy.DVDCopy.Member.MembershipNumber)
+                .Select(g => new { name = g.Key, count = g.Count() ,date = g.Max(a => a.DVDCopy.DVDCopy.DateOut), })
+                .Where(a => a.date < lastLoan)
+                .ToList();
 
-            foreach (var dvd in MemberDVD)
+
+
+            List<Member> member = new List<Member>();
+            foreach(var g in group)
             {
-                var date = DateTime.Now.Day;
-                var NoOfDays =  dvd.DVDCopy.DVDCopy.DateOut.Day - date;
+                var a = _context.Member.Find(g.name);
+                member.Add(a);
+            }
+
+            //Joining members that have loaned dvd before one month
+            List<MemberDVDLoan> memberDVDList = new List<MemberDVDLoan>();
+            foreach (var m in member)
+            {
+                //Joining Member table
+                var memberJoin = _context.Member.Where(a => a.MembershipNumber == m.MembershipNumber)
+                    .Join(
+                    _context.Loan,
+                    Member => Member.MembershipNumber,
+                    Loan => Loan.MemberNumber,
+                    (Member, Loan) => new
+                    {
+                        Member,
+                        Loan,
+                        DateOut = Loan.DateOut,
+                    }
+                    )
+                    .Join(
+                 _context.DVDCopy,
+                 DVDCopy => DVDCopy.Loan.CopyNumber,
+                 Loan => Loan.CopyNumber,
+                 (DVDCopy, Loan) => new
+                 {
+                     DVDCopy,
+                     Loan,
+                 }
+                 )
+                    .Join(
+                 _context.DVDTitle,
+                 DVDCopy => DVDCopy.Loan.DVDNumber,
+                 DVDTitle => DVDTitle.DVDNumber,
+                 (DVDCopy, DVDTitle) => new
+                 {
+                     DVDCopy,
+                     DVDTitle,
+                 }
+                 ).FirstOrDefault();
+
+                var date = DateTime.Now;        //Current date
+                var Days = date - memberJoin.DVDCopy.DVDCopy.DateOut;       //Getting total number of loan days
+                var NoOfDays = Days.Days;
                 memberDVDList.Add(new MemberDVDLoan()
                 {
-                    FirstName = dvd.DVDCopy.DVDCopy.Member.MembershipFirstName,
-                    LastName = dvd.DVDCopy.DVDCopy.Member.MembershipLastName,
-                    Address = dvd.DVDCopy.DVDCopy.Member.MembershipAddress,
-                    DateOut = dvd.DVDCopy.DVDCopy.DateOut,
-                    DVDTitle = dvd.DVDTitle.DVDName,
+                    FirstName = memberJoin.DVDCopy.DVDCopy.Member.MembershipFirstName,
+                    LastName = memberJoin.DVDCopy.DVDCopy.Member.MembershipLastName,
+                    Address = memberJoin.DVDCopy.DVDCopy.Member.MembershipAddress,
+                    DateOut = memberJoin.DVDCopy.DVDCopy.DateOut.ToString("dd/MM/yyyy"),
+                    DVDTitle = memberJoin.DVDTitle.DVDName,
                     NoOfDays = NoOfDays,
-                }); ;
+                });
             }
+            
 
             return View(memberDVDList);
         }
+
+
+
+
+
     }
 }
